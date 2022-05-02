@@ -19,8 +19,22 @@ router.route("/developers")
   .post((req, res) => {
     const { body } = req;
 
-    //check for errors here
-    
+    const [isValid, err] = Developer.statics.validate(body);
+    if (!isValid) {
+      res.status(404).send({ error: err });
+      return;
+    }
+
+    const newDeveloper = new Developer(body);
+    newDeveloper.save()
+      .then(savedDeveloper => {
+        res.status(204).send();
+        return;
+      })
+      .catch(err => {
+        res.status(500).send({ message: "Could not create developer", error: err });
+        return;
+      });
   });
 
 module.exports = router;
