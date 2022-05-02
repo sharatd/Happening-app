@@ -6,6 +6,10 @@ const DeveloperSchema = new Schema({
     type: Schema.Types.String,
     required: true
   },
+  languages: [{
+    name: Schema.Types.String,
+    rating: Schema.Types.Number
+  }],
 // Example of array
 //   rsvp: [{
 //     type: Schema.Types.ObjectId,
