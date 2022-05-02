@@ -1,0 +1,30 @@
+{
+    "email": "email@email.com",
+    "technologies": [
+        {
+            "name": "Python",
+            "rating": 7
+        },
+        {
+            "name": "JavaScript",
+            "rating": 4
+        },
+        {
+            "name": "COBOL",
+            "rating": 7
+        }
+    ],
+    "projects": [
+        {
+            "name": "COBOL 4 Fun",
+            "description": "Worked in my favorite language to rebuild C"
+        }
+    ],
+    "resume": "",
+    "availability": true,
+    "topLanguage": "COBOL",
+    "timeCommitment": 7,
+    "preferredTopics": ["ML", "Web Dev"],
+    "preferredLanguages": ["COBAL", "Python"],
+    "school": "Northwestern University"
+}
