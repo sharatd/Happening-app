@@ -19,7 +19,7 @@ router.route("/developers")
   .post((req, res) => {
     const { body } = req;
 
-    const [isValid, err] = Developer.statics.validate(body);
+    const [isValid, err] = Developer.validate(body);
     if (!isValid) {
       res.status(404).send({ error: err });
       return;
