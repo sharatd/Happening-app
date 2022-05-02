@@ -11,11 +11,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install node_modules and build app
         run: npm ci && npm run build
-        working-directory: /client
+        working-directory: ./client
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          entrypoint: /client
+          entrypoint: ./client
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_XENAH_DEV_PORTAL }}'
           projectId: xenah-dev-portal
