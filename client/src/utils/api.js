@@ -15,7 +15,7 @@ export const useDevelopers = () => {
     fetch(`${BASE_URL}/developers`, {signal: abortController.signal})
     .then( (res) => res.json())
     .then((res) => {
-        setData({...res});
+        setData([...res.developers]);
         setLoading(false);
         setError(null);
     })
