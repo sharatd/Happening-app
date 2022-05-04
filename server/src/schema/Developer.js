@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const DeveloperSchema = new Schema({
+  name: {
+    type: Schema.Types.String,
+    required: true
+  },
   email: {
     type: Schema.Types.String,
     required: true
@@ -41,6 +45,7 @@ const DeveloperSchema = new Schema({
 DeveloperSchema.statics.create = function(obj) {
   const Developer = mongoose.model("Developer", DeveloperSchema);
   const developer = new Developer();
+  developer.name = obj.name;
   developer.email = obj.email;
   developer.technologies = obj.technologies;
   developer.projects = obj.projects;

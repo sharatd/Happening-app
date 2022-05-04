@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-const BASE_URL = 'https://xenah-dev-portal.herokuapp.com/';
-//const BASE_URL = 'http://localhost:8081';
+//const BASE_URL = 'https://xenah-dev-portal.herokuapp.com/';
+const BASE_URL = 'http://localhost:8081';
 
 export const useDevelopers = () => {
   const [data, setData] = useState();

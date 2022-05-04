@@ -1,5 +1,7 @@
 import React from 'react';
 import { useDevelopers } from '../utils/api';
+import DeveloperCard from './DeveloperCard';
+
 
 const BrowseDevelopers = () => {
   const [developers, loading, error] = useDevelopers();
@@ -12,9 +14,7 @@ const BrowseDevelopers = () => {
       <h1>Xenah Dev Portal</h1>
       <div>
         {developers.map((developer, index) => (
-          <div style={{padding: "1em", border: "solid 1px black", margin: "1em"}} key={index}>
-            {JSON.stringify(developer)}
-          </div>
+            <DeveloperCard key={index} developer={developer}/>
         ))}
       </div>
     </div>
