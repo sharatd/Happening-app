@@ -1,67 +1,71 @@
 {
-    "name": "Jackson Miller",
-    "email": "jacksonfire123@gmail.com",
-    "technologies": [
+    "developers": [
         {
-            "name": "C++",
-            "rating": 4
+            "name": "Jackson Miller",
+            "email": "jacksonfire123@gmail.com",
+            "technologies": [
+                {
+                    "name": "C++",
+                    "rating": 4
+                },
+                {
+                    "name": "DSSL2",
+                    "rating": 7
+                },
+                {
+                    "name": "Python",
+                    "rating": 7
+                }
+            ],
+            "projects": [
+                {
+                    "name": "Horse Racing",
+                    "description": "Horses"
+                }
+            ],
+            "resume": "",
+            "availability": false,
+            "topLanguage": "DSSL2",
+            "timeCommitment": 7,
+            "preferredTopics": ["Backend", "Scripting"],
+            "preferredLanguages": ["DSSL2", "Python"],
+            "school": "Northwestern University"
         },
-        {
-            "name": "DSSL2",
-            "rating": 7
-        },
-        {
-            "name": "Python",
-            "rating": 7
-        }
-    ],
-    "projects": [
-        {
-            "name": "Horse Racing",
-            "description": "Horses"
-        }
-    ],
-    "resume": "",
-    "availability": false,
-    "topLanguage": "DSSL2",
-    "timeCommitment": 7,
-    "preferredTopics": ["Backend", "Scripting"],
-    "preferredLanguages": ["DSSL2", "Python"],
-    "school": "Northwestern University"
-}
 
-{
-    "name": "Spencer Fitch",
-    "email": "spencer@spencerfitch.com",
-    "technologies": [
         {
-            "name": "Python",
-            "rating": 7
-        },
-        {
-            "name": "JavaScript",
-            "rating": 7
-        },
-        {
-            "name": "DSSL2",
-            "rating": 3
-        },
-        {
-            "name": "Go",
-            "rating": 3
+            "name": "Spencer Fitch",
+            "email": "spencer@spencerfitch.com",
+            "technologies": [
+                {
+                    "name": "Python",
+                    "rating": 7
+                },
+                {
+                    "name": "JavaScript",
+                    "rating": 7
+                },
+                {
+                    "name": "DSSL2",
+                    "rating": 3
+                },
+                {
+                    "name": "Go",
+                    "rating": 3
+                }
+            ],
+            "projects": [
+                {
+                    "name": "Unfound",
+                    "description": "Startup working full stack"
+                }
+            ],
+            "resume": "",
+            "availability": true,
+            "topLanguage": "JavaScript",
+            "timeCommitment": 4,
+            "preferredTopics": ["Backend", "Web Dev"],
+            "preferredLanguages": ["JavaScript", "Python"],
+            "school": "Northwestern University"
         }
-    ],
-    "projects": [
-        {
-            "name": "Unfound",
-            "description": "Startup working full stack"
-        }
-    ],
-    "resume": "",
-    "availability": true,
-    "topLanguage": "JavaScript",
-    "timeCommitment": 4,
-    "preferredTopics": ["Backend", "Web Dev"],
-    "preferredLanguages": ["JavaScript", "Python"],
-    "school": "Northwestern University"
+    ]
 }
