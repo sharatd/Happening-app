@@ -11,14 +11,12 @@ const DeveloperTechnologies = ({ topLanguage, technologies }) => {
   const sortedTechnologies = technologies.sort((dev1, dev2) => dev2.rating - dev1.rating)
 
   return(
-    <div>
-      <Typography>Top Language:</Typography>
-      
-      <Typography>Technologies: </Typography>
-      <div>
+    <div>      
+      <Typography style={{textAlign:'center' }}>Technologies</Typography>
+      <div style={{display: 'flex', justifyContent: 'center', flexFlow: 'wrap'}}>
           {
             sortedTechnologies.map((technology, index) => (
-              <Chip key={index} label={`${technology.name} ${technology.rating}★`}/>
+             <Chip style={{margin: '0.1em 0.2em'}} color={technology.name === topLanguage ? 'primary': 'default'} key={index} label={`${technology.name} ${technology.rating}★`}/>
             ))
           }
       </div>
@@ -29,7 +27,7 @@ const DeveloperTechnologies = ({ topLanguage, technologies }) => {
 const DeveloperCard = ({ developer }) => {
 
   return(
-    <Card style={{ margin: '1em', width: 'fit-content' }}>
+    <Card style={{ margin: '1em', width: '20em' }}>
       <CardContent style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
         <Avatar
           alt={developer.name + ' avatar'}
@@ -43,7 +41,7 @@ const DeveloperCard = ({ developer }) => {
         <Typography>Preferred Topics:</Typography>
         <div>
           {developer.preferredTopics.map((topic, index) => (
-            <Chip key={index} label={topic}/>
+            <Chip style={{margin: '0.1em 0.2em'}} key={index} label={topic}/>
           ))}
         </div>
       </CardContent>

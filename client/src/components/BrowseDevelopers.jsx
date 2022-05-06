@@ -12,7 +12,7 @@ const BrowseDevelopers = () => {
   return (
     <div>
       <h1>Xenah Dev Portal</h1>
-      <div>
+      <div style={{display: 'flex', flexFlow: 'wrap'}}>
         {developers.map((developer, index) => (
             <DeveloperCard key={index} developer={developer}/>
         ))}
