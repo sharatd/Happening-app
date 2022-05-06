@@ -6,6 +6,26 @@ import Chip from "@mui/material/Chip";
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from "@mui/material/colors";
 
+const DeveloperTechnologies = ({ topLanguage, technologies }) => {
+
+  const sortedTechnologies = technologies.sort((dev1, dev2) => dev2.rating - dev1.rating)
+
+  return(
+    <div>
+      <Typography>Top Language:</Typography>
+      
+      <Typography>Technologies: </Typography>
+      <div>
+          {
+            sortedTechnologies.map((technology, index) => (
+              <Chip key={index} label={`${technology.name} ${technology.rating}★`}/>
+            ))
+          }
+      </div>
+      </div>
+  )
+}
+
 const DeveloperCard = ({ developer }) => {
 
   return(
@@ -19,14 +39,7 @@ const DeveloperCard = ({ developer }) => {
         </Avatar>
         <Typography variant={"h5"}>{ developer.name }</Typography>
         <Typography>{developer.school}</Typography>
-        <Typography>Languages:</Typography>
-        <div>
-          {
-            developer.technologies.sort((dev1, dev2) => dev2.rating - dev1.rating).map((technology, index) => (
-              <Chip key={index} label={`${technology.name} ${technology.rating}★`}/>
-            ))
-          }
-        </div>
+        <DeveloperTechnologies topLanguage={developer.topLanguage} technologies={developer.technologies}/>
         <Typography>Preferred Topics:</Typography>
         <div>
           {developer.preferredTopics.map((topic, index) => (
