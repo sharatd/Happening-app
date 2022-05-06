@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDevelopers } from '../utils/api';
 import DeveloperCard from './DeveloperCard';
 
