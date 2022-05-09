@@ -43,13 +43,23 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             <p style={{ margin: 0}}>Available { developer.timeCommitment }hr/wk </p>
           </div>
         </div>
-        <AttributeSliderGroup attributes={ developer.technologies.map((technology) => [technology.name, technology.rating / 7]) }/>
 
-        <Typography>Languages:</Typography>
-        {developer.technologies.sort((dev1, dev2) => dev2.rating - dev1.rating).map((technology, index) => (
-          <Chip key={index} label={`${technology.name} ${technology.rating}★`}/>
-        ))}
-        <br/>
+        <div style={{ display: 'flex', width: '100%', justifyContent: 'space-around'}}>
+          <div>
+            <h4 style={{ margin: 0, marginBottom: '0.4em' }}>Technologies</h4>
+            <AttributeSliderGroup
+              attributes={ developer.technologies.map((technology) => [technology.name, technology.rating / 7]) }
+            />
+          </div>
+          
+          <div>
+            <h4 style={{ margin: 0, marginBottom: '0.4em' }}>Topics</h4>
+            <AttributeSliderGroup
+              attributes={ developer.preferredTopics.map((topic) => [topic, Math.random()]) }
+            />
+          </div>
+        </div>
+
         <Typography variant={"body"}>
           Projects:
           {developer.projects.map((project, index) => (
@@ -57,13 +67,6 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           ))}
         </Typography>
         <br/>
-        <Chip label={developer.availability ? "Available" : "Unavailable"}></Chip>
-        <br/>
-        <Typography>Available for {developer.timeCommitment} hours per week</Typography>
-        <Typography>Preferred Topics:</Typography>
-        {developer.preferredTopics.map((topic, index) => (
-          <Chip key={index} label={topic}/>
-        ))}
         <Typography>Preferred Languages</Typography>
         {developer.preferredLanguages.map((language, index) => (
           <Chip key={index} label={language}/>
