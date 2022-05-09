@@ -1,12 +1,10 @@
 import React from 'react';
-import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import { deepPurple } from "@mui/material/colors";
 
 import AttributeSliderGroup from './AttributeSliderGroup';
@@ -71,7 +69,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           <h4 style={{ margin: 0 }}>Previous Projects</h4>
           <div style={{ display: 'flex', flewFlow: 'wrap'}}>
             {developer.projects.map((project, idx) => (
-              <Card key={idx} style={{ width: '11em', padding: '0.5em'}}>
+              <Card key={idx} style={{ width: '11em', padding: '0.5em', margin: '0.5em'}}>
                 <h5 style={{ margin: 0 }}>{ project.name }</h5>
                 <p style={{ margin: 0 }}>{ project.description }</p>
               </Card>
