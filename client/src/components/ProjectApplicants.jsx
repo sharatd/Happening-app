@@ -3,10 +3,10 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-const ProjectApplicants = ({ project, onClose }) => {
+const ProjectApplicants = ({ project, onClose, showProjectApplicants }) => {
 
     return(
-        <Modal open={showDeveloperInfo} onClose={() => setShowDeveloperInfo(false)}>
+        <Modal open={showProjectApplicants} onClose={ onClose }>
         <Box 
           sx={{
             position: 'absolute',
@@ -20,8 +20,10 @@ const ProjectApplicants = ({ project, onClose }) => {
             p: 4,
           }}
         >
-          <Button onClick={() => setShowDeveloperInfo(false)}>Close</Button>
+          <Button onClick={ onClose }>Close</Button>
         </Box>
       </Modal>
     )
 }
+
+export default ProjectApplicants
