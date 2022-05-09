@@ -23,22 +23,24 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           p: 4,
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2em' }}>
           <div style={{width: 'auto' }}>
             <Avatar
               alt={developer.name + ' avatar'}
               sx={{ bgcolor: deepPurple[500], height: 80, width: 80 }}
             >
-              { developer.name.substr(0, 1)}
+              { developer.name.substr(0, 1) } 
             </Avatar>
           </div>
           <div style={{ marginLeft: '1em' }}>
-            <h2>{ developer.name }</h2>
-            <p>{ developer.email }</p>
-            <p>Available { developer.timeCommitment }hr/wk </p>
+            <div style={{display: 'flex'}}>
+              <h2 style={{ margin: 0}}>{ developer.name }</h2>
+              <Chip label={developer.school}/>
+            </div>
+            <p style={{ margin: 0}}>{ developer.email }</p>
+            <p style={{ margin: 0}}>Available { developer.timeCommitment }hr/wk </p>
           </div>
         </div>
-        <Typography>{developer.school}</Typography>
         <Typography>Languages:</Typography>
         {developer.technologies.sort((dev1, dev2) => dev2.rating - dev1.rating).map((technology, index) => (
           <Chip key={index} label={`${technology.name} ${technology.rating}★`}/>
