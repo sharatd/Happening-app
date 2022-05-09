@@ -20,15 +20,15 @@
             "projects": [
                 {
                     "name": "Horse Racing",
-                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    "description": "Developed a system for predicting winners of horse races using information scraped from TwinSpires.com"
                 },
                 {
                     "name": "Happening",
-                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    "description": "Utilized agile methodologies to develop a web app in five weeks focused on finding and sharing student-run events"
                 },
                 {
                     "name": "Summer Internship",
-                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    "description": "Implemented a RESTful API for retrieving and updating product information"
                 }
             ],
             "resume": "",
@@ -64,11 +64,11 @@
             "projects": [
                 {
                     "name": "Unfound",
-                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    "description": "Lead development team for a early-stage social media startup focused on the discovery of novel experiences."
                 },
                 {
                     "name": "Happening",
-                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    "description": "Developed a web app for finding and sharing student-run events"
                 }
             ],
             "resume": "",
