@@ -11,7 +11,7 @@ const BrowseDevelopers = () => {
 
   return (
     <div>
-      <h1>Developers</h1>
+      <h1 style={{ paddingLeft: '1.5em'}}>Developers</h1>
       <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center'}}>
         {developers.map((developer, index) => (
             <DeveloperCard key={index} developer={developer}/>
