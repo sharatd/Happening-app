@@ -20,7 +20,15 @@
             "projects": [
                 {
                     "name": "Horse Racing",
-                    "description": "Horses"
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                },
+                {
+                    "name": "Happening",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                },
+                {
+                    "name": "Summer Internship",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 }
             ],
             "resume": "",
@@ -56,7 +64,11 @@
             "projects": [
                 {
                     "name": "Unfound",
-                    "description": "Startup working full stack"
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                },
+                {
+                    "name": "Happening",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 }
             ],
             "resume": "",
