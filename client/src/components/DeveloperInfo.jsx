@@ -43,7 +43,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             <p style={{ margin: 0}}>Available { developer.timeCommitment }hr/wk </p>
           </div>
         </div>
-        <AttributeSliderGroup attributes={ developer.technologies.map((technology) => [technology.name, technology.rating / 7])} />
+        <AttributeSliderGroup attributes={ developer.technologies.map((technology) => [technology.name, technology.rating / 7]) }/>
 
         <Typography>Languages:</Typography>
         {developer.technologies.sort((dev1, dev2) => dev2.rating - dev1.rating).map((technology, index) => (

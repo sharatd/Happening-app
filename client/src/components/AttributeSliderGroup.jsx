@@ -6,50 +6,25 @@ import React from 'react';
  * @returns 
  */
 const AttributeSliderGroup = ({ attributes }) => {
-  const labels = attributes.map(([label,]) => label);
-  const percentages = attributes.map(([, percentage]) => percentage);
   
   return (
-    <div style={{ display: 'flex', flexDirection: 'row'}}>
-      <div>
-        {
-          labels.map((label, idx) => (
-            <div key={idx}>{ label }</div>
-          ))
-        }
-      </div>
-
-      <div style={{ width: '10em', paddingLeft: '1em' }}>
-        {
-          percentages.map((percentage, idx) => (
-            <div key={idx} style={{ width: '100%' }}>
-              <div
-                style={{
-                  backgroundColor: 'blue',
-                  height: '100%',
-                  width: Math.round(percentage * 100).toFixed(0) + '%'
-                }}
-              />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  )
-
-  return (
-    <div style={{ display: 'flex', width: '10em' }}>
-      <span>{ label }</span>
-
-      <div style={{ backgroundColor: 'grey', flex: 1, marginLeft: '0.2em' }}>
-        <div
-          style={{
-            backgroundColor: 'blue',
-            height: '100%',
-            width: Math.round(percentage * 100).toFixed(0) + '%'
-          }}
-        />
-      </div>
+    <div style={{ display: 'grid', gridTemplateRows: 'repeat(auto-fill, 120px)', gridTemplateColumns: 'max-content 10em'}}>
+      {attributes.map(([label, percentage]) => (
+        <>
+          <div>
+            { label }
+          </div>
+          <div style={{ width: '100%', height: '1em', backgroundColor: 'grey' }}>
+            <div
+              style={{
+                backgroundColor: 'blue',
+                height: '100%',
+                width: Math.round(percentage * 100).toFixed(0) + '%'
+              }}
+            />
+          </div>
+        </>
+      ))} 
     </div>
   );
 }
