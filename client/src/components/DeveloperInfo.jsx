@@ -5,6 +5,8 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import { deepPurple } from "@mui/material/colors";
 
 import AttributeSliderGroup from './AttributeSliderGroup';
@@ -18,7 +20,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '60%',
+          width: '40em',
           bgcolor: 'background.paper',
           border: '2px solid #000',
           boxShadow: 24,
@@ -44,7 +46,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           </div>
         </div>
 
-        <div style={{ display: 'flex', width: '100%', justifyContent: 'space-around'}}>
+        <div style={{ display: 'flex', width: '100%', justifyContent: 'flex-start'}}>
           <div>
             <h4 style={{ margin: 0, marginBottom: '0.4em' }}>Technologies</h4>
             <AttributeSliderGroup
@@ -52,25 +54,30 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             />
           </div>
           
-          <div>
+          <div style={{ marginLeft: '2em' }}>
             <h4 style={{ margin: 0, marginBottom: '0.4em' }}>Topics</h4>
             <AttributeSliderGroup
               attributes={ developer.preferredTopics.map((topic) => [topic, Math.random()]) }
             />
           </div>
         </div>
-
-        <Typography variant={"body"}>
-          Projects:
-          {developer.projects.map((project, index) => (
-            <a href="/" key={index}>{project.name}</a>
-          ))}
-        </Typography>
         <br/>
-        <Typography>Preferred Languages</Typography>
+        <h4 style={{ margin: 0 }}>Preferred Languages</h4>
         {developer.preferredLanguages.map((language, index) => (
           <Chip key={index} label={language}/>
         ))}
+
+        <div style={{ marginTop: '1em' }}>
+          <h4 style={{ margin: 0 }}>Previous Projects</h4>
+          <div style={{ display: 'flex', flewFlow: 'wrap'}}>
+            {developer.projects.map((project, idx) => (
+              <Card key={idx} style={{ width: '11em', padding: '0.5em'}}>
+                <h5 style={{ margin: 0 }}>{ project.name }</h5>
+                <p style={{ margin: 0 }}>{ project.description }</p>
+              </Card>
+            ))}
+          </div>
+        </div>
 
         <div>
           <Button onClick={onClose}>Close</Button>

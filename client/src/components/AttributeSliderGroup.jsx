@@ -8,7 +8,7 @@ import React from 'react';
 const AttributeSliderGroup = ({ attributes, backgroundColor = 'lightgray', sliderColor = 'lightblue' }) => {
   
   return (
-    <div style={{ display: 'grid', gridTemplateRows: 'repeat(auto-fill, 1em)', gridTemplateColumns: 'max-content 7em', rowGap: '.4em', columnGap: '.4em' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'max-content 7em', rowGap: '.4em', columnGap: '.4em' }}>
       {attributes.map(([label, percentage]) => (
         <>
           <div>
