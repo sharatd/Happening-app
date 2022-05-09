@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from "@mui/material/colors";
 
+import AttributeSliderGroup from './AttributeSliderGroup';
+
 const DeveloperInfo = ({ show, onClose, developer }) => {
   return (
     <Modal open={show} onClose={onClose}>
@@ -41,6 +43,8 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             <p style={{ margin: 0}}>Available { developer.timeCommitment }hr/wk </p>
           </div>
         </div>
+        <AttributeSliderGroup attributes={ developer.technologies.map((technology) => [technology.name, technology.rating / 7])} />
+
         <Typography>Languages:</Typography>
         {developer.technologies.sort((dev1, dev2) => dev2.rating - dev1.rating).map((technology, index) => (
           <Chip key={index} label={`${technology.name} ${technology.rating}★`}/>
@@ -49,7 +53,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
         <Typography variant={"body"}>
           Projects:
           {developer.projects.map((project, index) => (
-            <a href="/">{project.name}</a>
+            <a href="/" key={index}>{project.name}</a>
           ))}
         </Typography>
         <br/>
