@@ -35,8 +35,9 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             </Avatar>
           </div>
           <div style={{ marginLeft: '1em' }}>
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', alignItems: 'center'}}>
               <h2 style={{ margin: 0}}>{ developer.name }</h2>
+              <h2 style={{ margin: '0 0.3em', marginRight: '0.9em', fontWeight: 'normal', letterSpacing: '0.06em'}}>{ developer.level }</h2>
               <Chip label={developer.school}/>
             </div>
             <p style={{ margin: 0}}>{ developer.email }</p>
@@ -48,14 +49,14 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           <div>
             <h4 style={{ margin: 0, marginBottom: '0.4em' }}>Technologies</h4>
             <AttributeSliderGroup
-              attributes={ developer.technologies.map((technology) => [technology.name, technology.rating / 7]) }
+              attributes={ developer.technologies.map(({ name, rating }) => [name, rating / 7]) }
             />
           </div>
           
           <div style={{ marginLeft: '2em' }}>
             <h4 style={{ margin: 0, marginBottom: '0.4em' }}>Topics</h4>
             <AttributeSliderGroup
-              attributes={ developer.preferredTopics.map((topic) => [topic, Math.random()]) }
+              attributes={ developer.preferredTopics.map(({ name, rating }) => [name, rating / 7])}
             />
           </div>
         </div>

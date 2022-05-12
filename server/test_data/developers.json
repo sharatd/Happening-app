@@ -35,9 +35,19 @@
             "availability": false,
             "topLanguage": "DSSL2",
             "timeCommitment": 7,
-            "preferredTopics": ["Backend", "Scripting"],
+            "preferredTopics": [
+                {
+                    "name": "Backend",
+                    "rating": 7
+                },
+                {
+                    "name": "Scripting",
+                    "rating": 1
+                }
+            ],
             "preferredLanguages": ["DSSL2", "Python"],
-            "school": "Northwestern University"
+            "school": "Northwestern University",
+            "level": "L1"
         },
 
         {
@@ -75,9 +85,18 @@
             "availability": true,
             "topLanguage": "JavaScript",
             "timeCommitment": 4,
-            "preferredTopics": ["Backend", "Web Dev"],
+            "preferredTopics": [
+                {
+                    "name": "Backend",
+                    "rating": "4"
+                }, 
+                {
+                    "name": "Web Dev",
+                    "rating": "7"
+                }],
             "preferredLanguages": ["JavaScript", "Python"],
-            "school": "Northwestern University"
+            "school": "Northwestern University",
+            "level": "L3"
         }
     ]
 }

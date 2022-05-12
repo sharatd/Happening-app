@@ -34,11 +34,22 @@ const DeveloperSchema = new Schema({
     type: Schema.Types.Number,
     required: true
   },
-  preferredTopics: [Schema.Types.String],
+  preferredTopics: [{
+    name: Schema.Types.String,
+    rating: Schema.Types.Number
+  }],
   preferredLanguages: [Schema.Types.String],
   school: {
     type: Schema.Types.String,
     required: true
+  },
+  level: {
+    type: Schema.Types.String,
+    required: false
+  },
+  adminNotes: {
+    type: Schema.Types.String,
+    required: false
   }
 });
 
@@ -49,13 +60,15 @@ DeveloperSchema.statics.create = function(obj) {
   developer.email = obj.email;
   developer.technologies = obj.technologies;
   developer.projects = obj.projects;
-  developer.resume = obj.resume;
+  if (obj.resume) {developer.resume = obj.resume};
   developer.availability = obj.availability;
   developer.topLanguage = obj.topLanguage;
   developer.timeCommitment = obj.timeCommitment;
   developer.preferredTopics = obj.preferredTopics;
   developer.preferredLanguages = obj.preferredLanguages;
   developer.school = obj.school;
+  if (obj.level) {developer.level = obj.level};
+  if (obj.notes) {developer.notes = obj.notes};
   return developer;
 }
 
