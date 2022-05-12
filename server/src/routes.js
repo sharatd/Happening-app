@@ -42,6 +42,16 @@ router.route("/projects")
       });
   });
 
+router.route("/projects/:pid/addDeveloper/:did")
+  .post((req, res) => {
+    const { pid, did } = req.params;
+    Job.findById(pid).then((data) => {
+      if (data.developers.some(developer => (developer.id === did))) {
+        Job.updateOne({ id: pid }, {$push: { developers : [did] }})
+      }
+    })
+  })
+
 router.route("/developers")
   .get((req, res) => {
     Developer.find({}).then((data) => {
@@ -68,5 +78,7 @@ router.route("/developers")
         return;
       });
   });
+
+
 
 module.exports = router;
