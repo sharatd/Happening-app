@@ -39,7 +39,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           <div style={{ marginLeft: '1em' }}>
             <div style={{display: 'flex', alignItems: 'center'}}>
               <h2 style={{ margin: 0}}>{ developer.name }</h2>
-              <h2 style={{ margin: '0 0.3em', marginRight: '0.9em', fontWeight: 'normal'}}>L3</h2>
+              <h2 style={{ margin: '0 0.3em', marginRight: '0.9em', fontWeight: 'normal', letterSpacing: '0.06em'}}>{ developer.level }</h2>
               <Chip label={developer.school}/>
             </div>
             <p style={{ margin: 0}}>{ developer.email }</p>
