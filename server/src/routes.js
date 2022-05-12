@@ -13,8 +13,12 @@ router.route("/").get((req, res) => {
 
 router.route("/projects")
   .get((req, res) => {
-    Job.find({}).then((data) => {
-      res.status(200).send({ developers: data })
+    Job.find({}).then(async (jobEntries) => {
+      const jobs = await Promise.all(jobEntries.map(async (job) => {
+        const developers = await Job.find({ _id: { $in: job.developers }});
+        return {...job._doc, developers: developers}
+      }));
+      res.status(200).send({ projects: jobs });
     });
   })
   .post((req, res) => {

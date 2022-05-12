@@ -1,0 +1,20 @@
+{
+    "jobs": [
+        {
+            "title": "MNML Storefront",
+            "description": "Web store for MNML's direct-to-consumer sales.",
+            "technologies": ["JavaScript", "React"],
+            "topics": ["Web Dev"],
+            "developers": [],
+            "applicants": []
+        },
+        {
+            "title": "TwinSpiers DX ZEr0",
+            "description": "Find twinspiration in horse. Race horse. Bet money. Lose Money. Lose all of your money. Blow up.",
+            "developers": [],
+            "technologies": ["Python", "Flask", "Firebase"],
+            "topics": ["web scraping", "statistics", "machine learning"],
+            "applicants": []
+        }
+    ]
+}

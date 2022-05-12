@@ -10,11 +10,6 @@ const JobSchema = new Schema({
     type: Schema.Types.String,
     required: true
   },
-  developers: [{
-    type: Schema.Types.ObjectId,
-    ref: "Developer",
-    required: true
-  }],
   technologies: [{
     type: Schema.Types.String,
     required: true
@@ -23,11 +18,11 @@ const JobSchema = new Schema({
     type: Schema.Types.String,
     required: true
   }],
-  applicants: [{
+  developers: [{
     type: Schema.Types.ObjectId,
     ref: "Developer",
     required: true
-  }]
+  }],
 })
 
 JobSchema.statics.create = function(obj) {
@@ -36,10 +31,9 @@ JobSchema.statics.create = function(obj) {
 
   job.title = obj.title;
   job.description = obj.description;
-  job.developers = obj.developers;
   job.technologies = obj.technologies;
   job.topics = obj.topics;
-  job.applicants = obj.applicants;
+  job.developers = [];
   return job;
 }
 
@@ -49,4 +43,4 @@ JobSchema.statics.validate = function(obj) {
   return [true, null]
 }
 
-module.exports = mongoose.model("Job", JobSchema)
+module.exports = mongoose.model("Job", JobSchema);
