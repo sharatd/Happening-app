@@ -37,8 +37,9 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             </Avatar>
           </div>
           <div style={{ marginLeft: '1em' }}>
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', alignItems: 'center'}}>
               <h2 style={{ margin: 0}}>{ developer.name }</h2>
+              <h2 style={{ margin: '0 0.3em', marginRight: '0.9em', fontWeight: 'normal'}}>L3</h2>
               <Chip label={developer.school}/>
             </div>
             <p style={{ margin: 0}}>{ developer.email }</p>
