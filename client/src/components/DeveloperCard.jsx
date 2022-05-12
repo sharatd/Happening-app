@@ -44,7 +44,7 @@ const DeveloperCard = ({ developer }) => {
           <Typography>Preferred Topics:</Typography>
           <div>
             {developer.preferredTopics.map((topic, index) => (
-              <Chip style={{margin: '0.1em 0.2em'}} key={index} label={topic}/>
+              <Chip style={{margin: '0.1em 0.2em'}} key={index} label={topic.name}/>
             ))}
           </div>
         </CardContent>

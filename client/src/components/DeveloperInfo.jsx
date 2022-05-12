@@ -51,14 +51,14 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           <div>
             <h4 style={{ margin: 0, marginBottom: '0.4em' }}>Technologies</h4>
             <AttributeSliderGroup
-              attributes={ developer.technologies.map((technology) => [technology.name, technology.rating / 7]) }
+              attributes={ developer.technologies.map(({ name, rating }) => [name, rating / 7]) }
             />
           </div>
           
           <div style={{ marginLeft: '2em' }}>
             <h4 style={{ margin: 0, marginBottom: '0.4em' }}>Topics</h4>
             <AttributeSliderGroup
-              attributes={ developer.preferredTopics.map((topic) => [topic, Math.random()]) }
+              attributes={ developer.preferredTopics.map(({ name, rating }) => [name, rating / 7])}
             />
           </div>
         </div>
