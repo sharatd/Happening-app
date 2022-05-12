@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const JobSchema = new Schema({
+const ProjectSchema = new Schema({
   title: {
     type: Schema.Types.String,
     required: true
@@ -25,22 +25,22 @@ const JobSchema = new Schema({
   }],
 })
 
-JobSchema.statics.create = function(obj) {
-  const Job = mongoose.model("Job", JobSchema);
-  const job = new Job();
+ProjectSchema.statics.create = function(obj) {
+  const Project = mongoose.model("Project", ProjectSchema);
+  const project = new Project();
 
-  job.title = obj.title;
-  job.description = obj.description;
-  job.technologies = obj.technologies;
-  job.topics = obj.topics;
-  job.developers = [];
-  return job;
+  project.title = obj.title;
+  project.description = obj.description;
+  project.technologies = obj.technologies;
+  project.topics = obj.topics;
+  project.developers = [];
+  return project;
 }
 
-JobSchema.statics.validate = function(obj) {
+ProjectSchema.statics.validate = function(obj) {
   // TODO: MAKE THIS DO STUFF
   // return [false, 'You did a bad thing']
   return [true, null]
 }
 
-module.exports = mongoose.model("Job", JobSchema);
+module.exports = mongoose.model("Project", ProjectSchema);
