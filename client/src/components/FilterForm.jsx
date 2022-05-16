@@ -11,10 +11,21 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
 
 const FilterForm = ({ showFilterForm, onClose, filters, setFilters}) => {
+  const technologyOptions = ['Swift', 'React', 'React Native', 'JavaScript', 'HTML', 
+                        'CSS', 'Flask', 'Django', 'nodeJS', 'Python', 'TensorFlow',
+                        'PyTorch', 'AWS', 'Firebase', 'SQL']
+  
+  const topicOptions = ['App Dev', 'Web App Dev', 'Web Dev']
 
-const FilterForm = ({ showFilterForm, onClose, filters, setFilters }) => {
-  const addFilter = (f) => setFilters([...filters, f]);
-  const removeFilter = (f) => setFilters(filters.filter(selected => selected !== f));
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
   
   return(
     <Modal open={ showFilterForm } onClose={ onClose }>
