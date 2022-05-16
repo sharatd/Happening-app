@@ -5,7 +5,7 @@ import React from 'react';
  * @param {Array[string, number]} attributes
  * @returns 
  */
-const AttributeSliderGroup = ({ attributes, backgroundColor = 'lightgray', sliderColor = 'lightblue' }) => {
+const AttributeSliderGroup = ({ attributes, backgroundColor = 'lightgray', sliderColor = '#263448' }) => {
   
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'max-content 7em', rowGap: '.4em', columnGap: '.4em' }}>
