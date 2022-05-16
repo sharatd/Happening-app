@@ -16,7 +16,6 @@ const BrowseDevelopers = () => {
 
   console.log(developers)
 
-
   return (
     <div>
       <FilterDevs filters={ filters } setFilters={ setFilters } filterOptions={ filterOptions }/>

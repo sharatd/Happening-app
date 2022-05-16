@@ -4,7 +4,7 @@ import Chip from "@mui/material/Chip";
 const FilterButton = ({ text, color, ...props }) => {
   return(
       //<button style={{margin: ".2em", border: 'none'}} className={`badge rounded-pill bg-${variant}`} {...props}>{ text }</button>
-      <Chip label={ text } {...props} color={ color }/>
+      <Chip style={{margin: '5px'}} label={ text } {...props} color={ color }/>
   )
 }
 
@@ -15,7 +15,7 @@ const FilterDevs = ({ filters, setFilters, filterOptions }) => {
   const removeFilter = (f) => setFilters(filters.filter(selected => selected !== f));
 
   return (
-    <div style={{ background: 'white', border: "solid 1px #333", borderRadius: '5px' }}>
+    <div style={{ width: '90%', margin: 'auto', background: 'white', border: "solid 1px #333", borderRadius: '5px' }}>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{flexGrow: '1'}}>
           {
