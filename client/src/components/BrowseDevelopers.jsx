@@ -16,11 +16,21 @@ const BrowseDevelopers = () => {
 
   console.log(developers)
 
+  const numElementsShared = (arr1, arr2) => (
+    arr2.length === 0 ? 1: arr1.reduce((acc, val) => (arr2.includes(val) ? acc + 1 : acc), 0)
+  );
+
+  const developerResults = developers
+    .map(developer => [numElementsShared(developer.technologies.name, filters), developer])
+    .filter(([count, _]) => count > 0)
+    .map(([_, developer]) => developer);
+  console.log(filters)
+
   return (
     <div>
       <FilterDevs filters={ filters } setFilters={ setFilters } filterOptions={ filterOptions }/>
       <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center'}}>
-        {developers.map((developer, index) => (
+        {developerResults.map((developer, index) => (
             <DeveloperCard key={index} developer={developer}/>
         ))}
       </div>
