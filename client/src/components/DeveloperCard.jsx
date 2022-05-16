@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import Avatar from '@mui/material/Avatar';
-import { deepPurple } from "@mui/material/colors";
 
 import DeveloperInfo from "./DeveloperInfo";
 
@@ -32,9 +31,10 @@ const DeveloperCard = ({ developer }) => {
     <>
       <Card style={{ margin: '1em', width: '20em' }} onClick={() => {setShowDeveloperInfo(true)}}>
         <CardContent style={{ display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+          <Chip style={{marginLeft: 'auto'}} label={developer.level}/>
           <Avatar
             alt={developer.name + ' avatar'}
-            sx={{ bgcolor: deepPurple[500] }}
+            sx={{ bgcolor: '#263448' }}
           >
             { developer.name.substr(0, 1)}
           </Avatar>

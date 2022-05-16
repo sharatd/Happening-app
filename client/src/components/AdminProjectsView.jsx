@@ -1,82 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import ProjectCard from "./ProjectCard"
+import AddProject from "./AddProject"
+import { useProjects } from '../utils/api';
+import Button from '@mui/material/Button';
 
 const AdminProjectsView = () => {
 
-    const jackson = {
-        "name": "Jackson Miller",
-        "email": "jacksonfire123@gmail.com",
-        "technologies": [
-            {
-                "name": "C++",
-                "rating": 4
-            },
-            {
-                "name": "DSSL2",
-                "rating": 7
-            },
-            {
-                "name": "Python",
-                "rating": 7
-            }
-        ],
-        "projects": [
-            {
-                "name": "Horse Racing",
-                "description": "Developed a system for predicting winners of horse races using information scraped from TwinSpires.com"
-            },
-            {
-                "name": "Happening",
-                "description": "Utilized agile methodologies to develop a web app in five weeks focused on finding and sharing student-run events"
-            },
-            {
-                "name": "Summer Internship",
-                "description": "Implemented a RESTful API for retrieving and updating product information"
-            }
-        ],
-        "resume": "",
-        "availability": false,
-        "topLanguage": "DSSL2",
-        "timeCommitment": 7,
-        "preferredTopics": ["Backend", "Scripting"],
-        "preferredLanguages": ["DSSL2", "Python"],
-        "school": "Northwestern University"
-    }
-
-    const test_developers = [...Array(20).keys()].map(() => jackson)
-
-    const projects = [
-        {
-            title: "Happening",
-            description: "Mobile app to view events on campus for Northwestern",
-            developers: [],
-            topics: ["Backend", "Web Dev"],
-            languages: ["JavaScript", "Python"]
-        },
-        {
-            title: "Google Maps",
-            description: "Mobile app to view events in Evanston",
-            developers: test_developers,
-            topics: ["Backend", "Web Dev"],
-            languages: ["JavaScript", "Python"]
-        },
-        {
-            title: "Google Maps",
-            description: "Mobile app to view events in Evanston",
-            developers: test_developers,
-            topics: ["Backend", "Web Dev"],
-            languages: ["JavaScript", "Python"]
-        }
-    ]
-
+    const [projects, loading, error] = useProjects();
+    const [showAddProject, setShowAddProject] = useState(false);
+    
+    if (error) return <h1>{error}</h1>;
+    if (loading) return <h1>Loading the projects...</h1>;
+    
     return(
         <div>
-            <h1 style={{ paddingLeft: '1.5em'}}>Projects</h1>
-            <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center'}}>
+            <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center', width: '90%', margin: 'auto'}}>
+                <Button onClick={() => setShowAddProject(true)} style={{marginLeft: 'auto', backgroundColor: 'green', color: 'white'}}>Add New Project</Button>
                 {projects.map((project, index) => (
                 <ProjectCard key={index} project={project}/>
                 ))}
             </div>
+
+            <AddProject onClose={() => setShowAddProject(false)} showAddProject={showAddProject} />
         </div>
     )
 }
