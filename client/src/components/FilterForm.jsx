@@ -12,20 +12,36 @@ import Chip from '@mui/material/Chip';
 
 const FilterForm = ({ showFilterForm, onClose, filters, setFilters}) => {
   const technologyOptions = ['Swift', 'React', 'React Native', 'JavaScript', 'HTML', 
-                        'CSS', 'Flask', 'Django', 'nodeJS', 'Python', 'TensorFlow',
-                        'PyTorch', 'AWS', 'Firebase', 'SQL']
+                            'CSS', 'Flask', 'Django', 'nodeJS', 'Python', 'TensorFlow',
+                            'PyTorch', 'AWS', 'Firebase', 'SQL']
   
   const topicOptions = ['App Dev', 'Web App Dev', 'Web Dev']
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    setFilters({...filters, technology: [...filters.technologies, event.target.value]});
   };
+
+  //stolen styling code
+  /*const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  };*/
+
+  /*function getStyles(name: string, personName: string[], theme: Theme) {
+    return {
+      fontWeight:
+        personName.indexOf(name) === -1
+          ? theme.typography.fontWeightRegular
+          : theme.typography.fontWeightMedium,
+    };
+  }*/
+
   
   return(
     <Modal open={ showFilterForm } onClose={ onClose }>
@@ -46,37 +62,26 @@ const FilterForm = ({ showFilterForm, onClose, filters, setFilters}) => {
           overflowY: 'auto'
         }}
       >
-       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-chip-label">Chip</InputLabel>
+       <FormControl fullWidth>
+        <InputLabel>Technologies</InputLabel>
         <Select
-          multiple
-          value={personName}
+          value={filters}
+          label="Technology"
           onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
-          renderValue={(selected) => (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} />
-              ))}
-            </Box>
-          )}
-          MenuProps={MenuProps}
         >
-          {names.map((name) => (
+          {technologyOptions.map((name) => (
             <MenuItem
               key={name}
               value={name}
-              style={getStyles(name, personName, theme)}
             >
               {name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-      <p>something</p>
       </Box>
     </Modal>
   )
 };
 
-export default FilterForm;  
+export default FilterForm;

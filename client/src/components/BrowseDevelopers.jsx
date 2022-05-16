@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 
 const BrowseDevelopers = () => {
   const [developers, loading, error] = useDevelopers();
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState({technologies: []});
   const [showFilterForm, setShowFilterForm] = useState(false);
 
   if (error) return <h1>{error}</h1>;
