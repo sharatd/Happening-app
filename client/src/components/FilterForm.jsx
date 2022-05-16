@@ -1,52 +1,67 @@
 import React, { useState } from "react";
+import BasicSelectForm from "./form_components/BasicSelectForm";
+import MultipleSelectForm from "./form_components/MultipleSelectForm";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
-import TextField from "@mui/material/TextField";
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import Chip from '@mui/material/Chip';
 
-const FilterForm = ({ showFilterForm, onClose, filters, setFilters}) => {
+const FilterForm = ({ showFilterForm, onClose, setFilters }) => {
+  const levelOptions = ['L1', 'L2', 'L3', 'L4', 'L5']
+
   const technologyOptions = ['Swift', 'React', 'React Native', 'JavaScript', 'HTML', 
                             'CSS', 'Flask', 'Django', 'nodeJS', 'Python', 'TensorFlow',
                             'PyTorch', 'AWS', 'Firebase', 'SQL']
+
+  const timeOptions = ['3+', '5+', '7+', '9+']
   
   const topicOptions = ['App Dev', 'Web App Dev', 'Web Dev']
 
-  const handleChange = (event) => {
-    const {
-      target: {technology}
-    } = event;
-    console.log(event.target.value)
-    setFilters({...filters, technologies: [...filters.technologies, ...event.target.value]});
-  };
-  console.log(filters)
+  const universityOptions = ['Northwestern University', 'University of Chicago', 'Duke University', 'Dartmouth College']
 
 
-  //stolen styling code
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-  };
+  const [selectedLevels, setSelectedLevels] = useState([]);
+  const [selectedTechnologies, setSelectedTechnologies] = useState([]);
+  const [preferredLanguage, setPreferredLanguage] = useState('');
+  const [isAvailable, setIsAvailable] = useState('');
+  const [selectedTime, setSelectedTime] = useState('')
+  const [selectedTopics, setSelectedTopics] = useState([]);
+  const [universities, setUniversities] = useState([]);
 
-  /*function getStyles(name: string, personName: string[], theme: Theme) {
-    return {
-      fontWeight:
-        personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }*/
+  const applyFilters = () => {
+    const filters = {
+      levels: selectedLevels,
+      technologies: selectedTechnologies,
+      preferredLanguage: preferredLanguage,
+      available: isAvailable,
+      timeAvailability: selectedTime,
+      topics: selectedTopics,
+      universities: universities
+    }
+
+    setFilters(filters)
+  }
+
+  const clear = () => {
+    setSelectedLevels([])
+    setSelectedTechnologies([])
+    setPreferredLanguage('')
+    setIsAvailable('')
+    setSelectedTime('')
+    setSelectedTopics([])
+    setUniversities([])
+
+    const emptyFilters = {
+      levels: [],
+      technologies: [],
+      preferredLanguage: '',
+      available: '',
+      timeAvailability: '',
+      topics: [],
+      universities: []
+    }
+
+    setFilters(emptyFilters)
+  }
 
   
   return(
@@ -68,26 +83,20 @@ const FilterForm = ({ showFilterForm, onClose, filters, setFilters}) => {
           overflowY: 'auto'
         }}
       >
-       <FormControl fullWidth>
-        <InputLabel>Technologies</InputLabel>
-        <Select
-          multiple
-          value={filters.technologies}
-          label="Technology"
-          onChange={handleChange}
-          input={<OutlinedInput label="Technology" />}
-          MenuProps={MenuProps}
-        >
-          {technologyOptions.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-            >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <MultipleSelectForm options={levelOptions} state={selectedLevels} setState={setSelectedLevels} label='Levels'/>
+      <MultipleSelectForm options={technologyOptions} state={selectedTechnologies} setState={setSelectedTechnologies} label='Technologies'/>
+      <BasicSelectForm options={technologyOptions} state={preferredLanguage} setState={setPreferredLanguage} label='Preferred Language'/>
+      <BasicSelectForm options={['Yes', 'No']} state={isAvailable} setState={setIsAvailable} label='Available'/>
+      <BasicSelectForm options={timeOptions} state={selectedTime} setState={setSelectedTime} label='Hours per Week'/>
+      <MultipleSelectForm options={topicOptions} state={selectedTopics} setState={setSelectedTopics} label='Interested Topics'/>
+      <MultipleSelectForm options={universityOptions} state={universities} setState={setUniversities} label='Universities'/>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1em'}}>
+        <Button onClick={() => onClose()} style={{ backgroundColor: 'red', color: 'white'}}>Close</Button>
+        <div>
+          <Button onClick={() => clear()} style={{ backgroundColor: 'blue', color: 'white', marginRight: '1em'}}>Clear</Button>
+          <Button onClick={() => applyFilters()} style={{ backgroundColor: 'green', color: 'white'}}>Apply Filters</Button>
+        </div>
+      </div>
       </Box>
     </Modal>
   )

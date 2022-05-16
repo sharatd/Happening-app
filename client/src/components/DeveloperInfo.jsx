@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
 import Card from "@mui/material/Card";
-import { deepPurple } from "@mui/material/colors";
 
 import AttributeSliderGroup from './AttributeSliderGroup';
 
@@ -29,7 +28,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           <div style={{width: 'auto' }}>
             <Avatar
               alt={developer.name + ' avatar'}
-              sx={{ bgcolor: deepPurple[500], height: 80, width: 80 }}
+              sx={{ bgcolor: '#263448', height: 80, width: 80 }}
             >
               { developer.name.substr(0, 1) } 
             </Avatar>
