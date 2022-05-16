@@ -18,11 +18,17 @@ const FilterForm = ({ showFilterForm, onClose, filters, setFilters}) => {
   const topicOptions = ['App Dev', 'Web App Dev', 'Web Dev']
 
   const handleChange = (event) => {
-    setFilters({...filters, technology: [...filters.technologies, event.target.value]});
+    const {
+      target: {technology}
+    } = event;
+    console.log(event.target.value)
+    setFilters({...filters, technologies: [...filters.technologies, ...event.target.value]});
   };
+  console.log(filters)
+
 
   //stolen styling code
-  /*const ITEM_HEIGHT = 48;
+  const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
     PaperProps: {
@@ -31,7 +37,7 @@ const FilterForm = ({ showFilterForm, onClose, filters, setFilters}) => {
         width: 250,
       },
     },
-  };*/
+  };
 
   /*function getStyles(name: string, personName: string[], theme: Theme) {
     return {
@@ -65,9 +71,12 @@ const FilterForm = ({ showFilterForm, onClose, filters, setFilters}) => {
        <FormControl fullWidth>
         <InputLabel>Technologies</InputLabel>
         <Select
-          value={filters}
+          multiple
+          value={filters.technologies}
           label="Technology"
           onChange={handleChange}
+          input={<OutlinedInput label="Technology" />}
+          MenuProps={MenuProps}
         >
           {technologyOptions.map((name) => (
             <MenuItem
