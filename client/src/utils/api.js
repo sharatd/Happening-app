@@ -28,3 +28,29 @@ export const useDevelopers = () => {
 
   return [data, loading, error];
 }
+
+export const useProjects = () => {
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    console.log('Fetching projects');
+    fetch(`${BASE_URL}/projects`, {signal: abortController.signal})
+    .then( (res) => res.json())
+    .then((res) => {
+        setData([...res.projects]);
+        setLoading(false);
+        setError(null);
+    })
+    .catch((err) => setError(err.toString())) 
+
+    return () => {
+      abortController.abort();
+    }
+  }, [])
+
+  return [data, loading, error];
+}

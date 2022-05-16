@@ -9,9 +9,10 @@ const BrowseDevelopers = () => {
   if (error) return <h1>{error}</h1>;
   if (loading) return <h1>Loading the developers...</h1>;
 
+  console.log(developers)
+
   return (
     <div>
-      <h1 style={{ paddingLeft: '1.5em'}}>Developers</h1>
       <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center'}}>
         {developers.map((developer, index) => (
             <DeveloperCard key={index} developer={developer}/>
