@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
 
 
-const FilterForm = ({ showFilterForm, onClose, filters, setFilters, filterOptions }) => {
+const FilterForm = ({ showFilterForm, onClose, filters, setFilters }) => {
   const addFilter = (f) => setFilters([...filters, f]);
   const removeFilter = (f) => setFilters(filters.filter(selected => selected !== f));
   
