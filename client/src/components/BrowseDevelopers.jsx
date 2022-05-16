@@ -10,10 +10,6 @@ const BrowseDevelopers = () => {
   const [developers, loading, error] = useDevelopers();
   const [filters, setFilters] = useState({});
   const [showFilterForm, setShowFilterForm] = useState(false);
-  const [hoursFilter, setHoursFilter] = useState(0);
-  const filterOptions = ['Swift', 'React', 'React Native', 'JavaScript', 'HTML', 
-                        'CSS', 'Flask', 'Django', 'nodeJS', 'Python', 'TensorFlow',
-                        'PyTorch', 'AWS', 'Firebase', 'SQL', 'App Dev', 'Web App Dev', 'Web Dev']
 
   if (error) return <h1>{error}</h1>;
   if (loading) return <h1>Loading the developers...</h1>;
@@ -32,12 +28,9 @@ const BrowseDevelopers = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex' }}>
-        <TextField style={{backgroundColor: 'white'}} variant="filled" size="small" label="Filter Hours" value={hoursFilter} onChange={(e)=>setHoursFilter(e.target.value)}/>
-        <button onClick={() => setShowFilterForm(true) }></button>
-      </div>
+      <button onClick={() => setShowFilterForm(true) }>Show Filter Form</button>
       <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center'}}>
-        {developerResults.map((developer, index) => (
+        {developers.map((developer, index) => (
             <DeveloperCard key={index} developer={developer}/>
         ))}
       </div>
