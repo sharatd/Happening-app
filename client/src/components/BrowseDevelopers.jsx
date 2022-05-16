@@ -7,7 +7,15 @@ import Button from '@mui/material/Button';
 
 const BrowseDevelopers = () => {
   const [developers, loading, error] = useDevelopers();
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState({
+                                            levels: [],
+                                            technologies: [],
+                                            preferredLanguage: '',
+                                            available: '',
+                                            timeAvailability: '',
+                                            topics: [],
+                                            universities: []
+                                          });
   const [showFilterForm, setShowFilterForm] = useState(false);
 
   if (error) return <h1>{error}</h1>;
@@ -22,6 +30,8 @@ const BrowseDevelopers = () => {
     .map(developer => [numElementsShared(developer.technologies, filters), developer])
     .filter(([count, _]) => count > 0)
     .map(([_, developer]) => developer);*/
+  
+  console.log(filters)
 
   return (
     <div>
