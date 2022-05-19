@@ -41,14 +41,14 @@ const BrowseDevelopers = () => {
 
   if (filters.topics.length > 0) {
     developerResults = developerResults.map(developer => 
-        [numElementsShared(developer.topics, filters.topics), developer]
+        [numElementsShared(developer.preferredTopics, filters.topics), developer]
       )
       .filter(([count, _]) => count > 0)
       .map(([_, developer]) => developer);
   } 
 
   if (filters.universities.length > 0) {
-    developerResults = developerResults.filter(developer => filters.universities.includes(developer.university))
+    developerResults = developerResults.filter(developer => filters.universities.includes(developer.school))
   }
 
   if (filters.preferredLanguage !== '') {
@@ -85,7 +85,7 @@ const BrowseDevelopers = () => {
       <div style={{display: 'flex', flexDirection: 'column'}}>
       <Button onClick={() => setShowFilterForm(true) } style={{ backgroundColor: 'green', color: 'white', alignSelf: 'center', width: '15%' }}>Show Filter Form</Button>
       <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center'}}>
-        {developerResults.map((developer, index) => (
+        {developerResults.length === 0 ? <h4>No Developers Matched Filters</h4> : developerResults.map((developer, index) => (
             <DeveloperCard key={index} developer={developer}/>
         ))}
       </div>
