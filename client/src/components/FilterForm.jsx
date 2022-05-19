@@ -33,12 +33,13 @@ const FilterForm = ({ showFilterForm, onClose, setFilters }) => {
       technologies: selectedTechnologies,
       preferredLanguage: preferredLanguage,
       available: isAvailable,
-      timeAvailability: selectedTime,
+      timeAvailability: parseInt(selectedTime.slice(0, -1)),
       topics: selectedTopics,
       universities: universities
     }
 
     setFilters(filters)
+    onClose()
   }
 
   const clear = () => {
@@ -94,7 +95,7 @@ const FilterForm = ({ showFilterForm, onClose, setFilters }) => {
         <Button onClick={() => onClose()} style={{ backgroundColor: 'red', color: 'white'}}>Close</Button>
         <div>
           <Button onClick={() => clear()} style={{ backgroundColor: 'blue', color: 'white', marginRight: '1em'}}>Clear</Button>
-          <Button onClick={() => applyFilters()} style={{ backgroundColor: 'green', color: 'white'}}>Apply Filters</Button>
+          <Button onClick={() => applyFilters() } style={{ backgroundColor: 'green', color: 'white'}}>Apply Filters</Button>
         </div>
       </div>
       </Box>
