@@ -33,7 +33,7 @@ const FilterForm = ({ showFilterForm, onClose, setFilters }) => {
       technologies: selectedTechnologies,
       preferredLanguage: preferredLanguage,
       available: isAvailable,
-      timeAvailability: selectedTime,
+      timeAvailability: parseInt(selectedTime.slice(0, -1)),
       topics: selectedTopics,
       universities: universities
     }
