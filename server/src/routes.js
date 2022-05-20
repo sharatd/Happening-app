@@ -114,7 +114,7 @@ router.route('/developers/:did/')
       });
   });
 
- router.route('developer/adminRating/:did/:stat/:rating') 
+ router.route('/developers/adminRating/:did/:stat/:rating') 
   .patch((req, res) => {
     const { did, stat, rating } = req.params;
     const newInfo = stat === 'work' ? { adminWorkRating: rating } : { adminCommRating: rating };

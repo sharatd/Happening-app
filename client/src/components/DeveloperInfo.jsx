@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chip from "@mui/material/Chip";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -11,7 +11,13 @@ import { addRating } from "../utils/api";
 import AttributeSliderGroup from './AttributeSliderGroup';
 
 const DeveloperInfo = ({ show, onClose, developer }) => {
-  const [sampleValue, setSampleValue] = useState(2.5);
+  const [workRating, setWorkRating] = useState(developer.adminWorkRating || 0);
+  const [commRating, setCommRating] = useState(developer.adminCommRating || 0);
+
+  useEffect(() => {
+    setWorkRating(developer.adminWorkRating || 0);
+    setCommRating(developer.adminCommRating || 0);
+  }, developer);
 
   return (
     <Modal open={show} onClose={onClose}>
@@ -87,9 +93,9 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             <h4 style={{ margin: 0 }}>Work Ethtic</h4>
             <Rating
               name="simple-controlled"
-              value={developer.adminWorkRating ? developer.adminWorkRating : 0}
+              value={workRating}
               onChange={(event, newValue) => {
-                addRating(developer.id, "work", newValue);;
+                addRating(developer._id, "work", newValue);;
               }}
               precision={0.5}
             />
@@ -98,9 +104,9 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             <h4 style={{ margin: 0 }}>Communication Skill</h4>
             <Rating
               name="simple-controlled"
-              value={developer.adminCommRating ? developer.adminCommRating : 0}
+              value={commRating}
               onChange={(event, newValue) => {
-                addRating(developer.id, "Comm", newValue);
+                addRating(developer._id, "Comm", newValue);
               }}
               precision={0.5}
             />

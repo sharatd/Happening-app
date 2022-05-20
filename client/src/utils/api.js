@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-const BASE_URL = 'https://xenah-dev-portal.herokuapp.com/';
-//const BASE_URL = 'http://localhost:8081';
+//const BASE_URL = 'https://xenah-dev-portal.herokuapp.com/';
+const BASE_URL = 'http://localhost:8081';
 
 export const useDevelopers = () => {
   const [data, setData] = useState();
@@ -59,7 +59,7 @@ export const addRating = (developerId, stat, rating) => {
   const options = {
     method: 'PATCH',
   };
-  fetch(`${BASE_URL}/developer/adminRating/${developerId}/${stat}/${rating}`, options)
+  fetch(`${BASE_URL}/developers/adminRating/${developerId}/${stat}/${rating}`, options)
     .then((res) => {
       if (!res.ok) console.log('Not okay', res);
     });
