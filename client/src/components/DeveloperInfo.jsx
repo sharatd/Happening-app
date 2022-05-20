@@ -80,8 +80,8 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           </div>
         </div>
         
-        <h2>Admin Notes</h2>
-        <div style={{display: "flex"}}>
+        <h3 style={{textAlign: "center"}}>Admin Notes</h3>
+        <div style={{display: "flex", justifyContent: "space-around"}}>
           <div style={{display: "flex", flexDirection: "column"}}>
             <h4 style={{ margin: 0 }}>Work Ethtic</h4>
             <Rating
