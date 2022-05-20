@@ -17,6 +17,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
   useEffect(() => {
     setWorkRating(developer.adminWorkRating || 0);
     setCommRating(developer.adminCommRating || 0);
+    console.log("state", commRating)
   }, developer);
 
   return (

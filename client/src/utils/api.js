@@ -65,3 +65,4 @@ export const addRating = (developerId, stat, rating) => {
     });
 
 }
+
