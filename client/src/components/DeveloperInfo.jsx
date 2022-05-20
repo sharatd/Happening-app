@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chip from "@mui/material/Chip";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
 import Card from "@mui/material/Card";
+import Rating from "@mui/material/Rating";
 
 import AttributeSliderGroup from './AttributeSliderGroup';
 
 const DeveloperInfo = ({ show, onClose, developer }) => {
+  const [sampleValue, setSampleValue] = useState(2.5);
+
   return (
     <Modal open={show} onClose={onClose}>
       <Box 
@@ -74,6 +77,32 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
                 <p style={{ margin: 0 }}>{ project.description }</p>
               </Card>
             ))}
+          </div>
+        </div>
+        
+        <h2>Admin Notes</h2>
+        <div style={{display: "flex"}}>
+          <div style={{display: "flex", flexDirection: "column"}}>
+            <h4 style={{ margin: 0 }}>Work Ethtic</h4>
+            <Rating
+              name="simple-controlled"
+              value={sampleValue}
+              onChange={(event, newValue) => {
+                setSampleValue(newValue);
+              }}
+              precision={0.5}
+            />
+          </div>
+          <div style={{display: "flex", flexDirection: "column"}}>
+            <h4 style={{ margin: 0 }}>Communication Skill</h4>
+            <Rating
+              name="simple-controlled"
+              value={sampleValue}
+              onChange={(event, newValue) => {
+                setSampleValue(newValue);
+              }}
+              precision={0.5}
+            />
           </div>
         </div>
 
