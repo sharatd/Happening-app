@@ -99,7 +99,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
               name="simple-controlled"
               value={sampleValue}
               onChange={(event, newValue) => {
-                setSampleValue(newValue);
+                setSampleValue(developer.id);
               }}
               precision={0.5}
             />

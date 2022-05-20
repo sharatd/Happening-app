@@ -105,17 +105,25 @@ router.route("/developers")
       });
   });
 
-router.route('/developers/:did')
+router.route('/developers/:did/')
   .delete((req, res) => {
     const { did } = req.params;
     Developer.findByIdAndDelete(did)
       .then((success) => {
         res.status(204).send();
       });
-  })
+  });
+
+ router.route('developer/adminRating/:did/:stat/:rating') 
   .patch((req, res) => {
-    const { did } = req.params;
-  })
+    const { did, stat, rating } = req.params;
+    const newInfo = stat === 'work' ? { adminWorkRating: rating } : { adminCommRating: rating };
+    Developer.findByIdAndUpdate(did, newInfo)
+    .then((success) => {
+      res.status(204).send();
+    });
+
+  });
 
 
 module.exports = router;
