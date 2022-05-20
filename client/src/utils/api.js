@@ -54,3 +54,14 @@ export const useProjects = () => {
 
   return [data, loading, error];
 }
+
+export const addRating = (developerId, stat, rating) => {
+  const options = {
+    method: 'PATCH',
+  };
+  fetch(`${BASE_URL}/developer/adminRating/${developerId}/${stat}/${rating}`, options)
+    .then((res) => {
+      if (!res.ok) console.log('Not okay', res);
+    });
+
+}

@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
 import Card from "@mui/material/Card";
 import Rating from "@mui/material/Rating";
+import { addRating } from "../utils/api";
 
 import AttributeSliderGroup from './AttributeSliderGroup';
 
@@ -86,9 +87,9 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             <h4 style={{ margin: 0 }}>Work Ethtic</h4>
             <Rating
               name="simple-controlled"
-              value={sampleValue}
+              value={developer.adminWorkRating ? developer.adminWorkRating : 0}
               onChange={(event, newValue) => {
-                setSampleValue(newValue);
+                addRating(developer.id, "work", newValue);;
               }}
               precision={0.5}
             />
@@ -97,9 +98,9 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             <h4 style={{ margin: 0 }}>Communication Skill</h4>
             <Rating
               name="simple-controlled"
-              value={sampleValue}
+              value={developer.adminCommRating ? developer.adminCommRating : 0}
               onChange={(event, newValue) => {
-                setSampleValue(developer.id);
+                addRating(developer.id, "Comm", newValue);
               }}
               precision={0.5}
             />
