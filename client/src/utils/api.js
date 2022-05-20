@@ -63,6 +63,5 @@ export const addRating = (developerId, stat, rating) => {
     .then((res) => {
       if (!res.ok) console.log('Not okay', res);
     });
-
 }
 

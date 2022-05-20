@@ -10,9 +10,20 @@ import { addRating } from "../utils/api";
 
 import AttributeSliderGroup from './AttributeSliderGroup';
 
+
 const DeveloperInfo = ({ show, onClose, developer }) => {
   const [workRating, setWorkRating] = useState(developer.adminWorkRating || 0);
   const [commRating, setCommRating] = useState(developer.adminCommRating || 0);
+  const [adminNotes, setAdminNotes] = useState(developer.adminNotes || '');
+
+  console.log(adminNotes);
+
+  const handleNotesSubmit = (text) => {
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("PATCH", `http://localhost:8081/developers/adminNotes/${ developer._id }`, false);
+    xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+    xhttp.send(JSON.stringify({ notes: text }));
+  }
 
   return (
     <Modal open={show} onClose={onClose}>
@@ -90,8 +101,10 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
               name="simple-controlled"
               value={workRating}
               onChange={(event, newValue) => {
-                addRating(developer._id, "work", newValue);
-                setWorkRating(newValue);
+                if (newValue) {
+                  addRating(developer._id, "work", newValue);
+                  setWorkRating(newValue);
+                }
               }}
               precision={0.5}
             />
@@ -102,8 +115,10 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
               name="simple-controlled"
               value={commRating}
               onChange={(event, newValue) => {
-                addRating(developer._id, "Comm", newValue);
-                setCommRating(newValue);
+                if (newValue) {
+                  addRating(developer._id, "Comm", newValue);
+                  setCommRating(newValue);
+                }
               }}
               precision={0.5}
             />

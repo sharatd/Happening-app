@@ -125,5 +125,16 @@ router.route('/developers/:did/')
     });
   });
 
+router.route('/developers/adminNotes/:did')
+  .patch((req, res) => {
+    const { body } = req;
+    const { did } = req.params;
+
+    Developer.findByIdAndUpdate(did, { adminNotes: body.notes })
+    .then((success) => {
+      res.status(204).send();
+    });
+  });
+
 
 module.exports = router;
