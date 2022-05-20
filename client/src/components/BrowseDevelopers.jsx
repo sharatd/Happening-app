@@ -84,7 +84,7 @@ const BrowseDevelopers = () => {
     <div>
       <div style={{display: 'flex', flexDirection: 'column'}}>
       <div style={{display: 'flex', flexDirection: 'row', width: '97%'}}>
-        <Button onClick={() => setShowFilterForm(true) } style={{ backgroundColor: 'green', color: 'white', alignSelf: 'center', width: '5%', marginLeft: 'auto', fontSize: '4em', height: '1em' }}>⌕</Button>
+        <Button onClick={() => setShowFilterForm(true) } style={{ backgroundColor: 'green', color: 'white', alignSelf: 'center', width: '5%', marginLeft: 'auto', fontSize: '4em', height: '1em', textAlign: 'center'}}>⌕</Button>
       </div>
       <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center'}}>
         {developerResults.length === 0 ? <h4>No Developers Matched Filters</h4> : developerResults.map((developer, index) => (
