@@ -51,52 +51,49 @@
         },
 
         {
-            "name": "Spencer Fitch",
-            "email": "spencer@spencerfitch.com",
+            "name": "Amber Li",
+            "email": "amberli2023@u.uchicago.edu",
             "technologies": [
                 {
-                    "name": "Python",
-                    "rating": 7
+                    "name": "Swift",
+                    "rating": 6
                 },
                 {
                     "name": "JavaScript",
-                    "rating": 7
-                },
-                {
-                    "name": "DSSL2",
                     "rating": 3
                 },
                 {
-                    "name": "Go",
+                    "name": "React",
                     "rating": 3
                 }
             ],
             "projects": [
                 {
-                    "name": "Unfound",
-                    "description": "Lead development team for a early-stage social media startup focused on the discovery of novel experiences."
+                    "name": "Course Planner",
+                    "description": "Native iOS app for UChicago students to plan their schedule and browse courses."
                 },
                 {
-                    "name": "Happening",
-                    "description": "Developed a web app for finding and sharing student-run events"
+                    "name": "Campus Q's",
+                    "description": "React web app where students can ask and answer questions from their fellow students."
                 }
             ],
             "resume": "",
             "availability": true,
-            "topLanguage": "JavaScript",
+            "topLanguage": "Swift",
             "timeCommitment": 4,
             "preferredTopics": [
                 {
-                    "name": "Backend",
-                    "rating": "4"
-                }, 
+                    "name": "App Dev",
+                    "rating": 6
+                },
                 {
-                    "name": "Web Dev",
-                    "rating": "7"
-                }],
-            "preferredLanguages": ["JavaScript", "Python"],
-            "school": "Northwestern University",
-            "level": "L3"
+                    "name": "Web App Dev",
+                    "rating": 2
+                }
+            ],
+            "preferredLanguages": ["Swift"],
+            "school": "University of Chicago",
+            "level": "L1"
         }
     ]
 }
