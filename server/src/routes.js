@@ -112,7 +112,10 @@ router.route('/developers/:did')
       .then((success) => {
         res.status(204).send();
       });
-  });
+  })
+  .patch((req, res) => {
+    const { did } = req.params;
+  })
 
 
 module.exports = router;

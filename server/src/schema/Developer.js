@@ -50,6 +50,14 @@ const DeveloperSchema = new Schema({
   adminNotes: {
     type: Schema.Types.String,
     required: false
+  },
+  adminWorkRating: {
+    type: Schema.Types.Number,
+    required: false
+  },
+  adminCommRating: {
+    type: Schema.Types.Number,
+    required: false
   }
 });
 
@@ -68,7 +76,9 @@ DeveloperSchema.statics.create = function(obj) {
   developer.preferredLanguages = obj.preferredLanguages;
   developer.school = obj.school;
   if (obj.level) {developer.level = obj.level};
-  if (obj.notes) {developer.notes = obj.notes};
+  if (obj.adminNotes) {developer.adminNotes = obj.adminNotes};
+  if (obj.adminWorkRating) {developer.adminWorkRating = obj.adminWorkRating};
+  if (obj.adminCommRating) {developer.adminCommRating = obj.adminCommRating};
   return developer;
 }
 
