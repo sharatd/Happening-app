@@ -112,13 +112,7 @@ router.route('/developers/:did/')
       .then((success) => {
         res.status(204).send();
       });
-  })
-  .get((req, res) => {
-    const { did } = req.params;
-    Developer.findById(did).then((data) => {
-      res.status(200).send({ developer: data })
-    });
-  })
+  });
 
 
  router.route('/developers/adminRating/:did/:stat/:rating') 
@@ -129,7 +123,6 @@ router.route('/developers/:did/')
     .then((success) => {
       res.status(204).send();
     });
-
   });
 
 

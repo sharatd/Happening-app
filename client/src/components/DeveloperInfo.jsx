@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Chip from "@mui/material/Chip";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -13,11 +13,6 @@ import AttributeSliderGroup from './AttributeSliderGroup';
 const DeveloperInfo = ({ show, onClose, developer }) => {
   const [workRating, setWorkRating] = useState(developer.adminWorkRating || 0);
   const [commRating, setCommRating] = useState(developer.adminCommRating || 0);
-
-  useEffect(() => {
-      setWorkRating(developer.adminWorkRating || 0);
-      setCommRating(developer.adminCommRating || 0);
-    }, developer);
 
   return (
     <Modal open={show} onClose={onClose}>
@@ -95,7 +90,8 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
               name="simple-controlled"
               value={workRating}
               onChange={(event, newValue) => {
-                addRating(developer._id, "work", newValue);;
+                addRating(developer._id, "work", newValue);
+                setWorkRating(newValue);
               }}
               precision={0.5}
             />
@@ -107,6 +103,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
               value={commRating}
               onChange={(event, newValue) => {
                 addRating(developer._id, "Comm", newValue);
+                setCommRating(newValue);
               }}
               precision={0.5}
             />
