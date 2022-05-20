@@ -9,8 +9,8 @@ const App = () => {
  
   return (
     <Router>
-      <div style={{ marginTop: '7em' }}>
-        <nav style={{ display: 'flex', padding: '10px', flexDirection: 'row', width: "100%", position: "fixed", top: "0", backgroundColor: "#263448"}}>
+      <div>
+        <nav style={{ display: 'flex', padding: '10px', flexDirection: 'row', width: "100%", top: "0", backgroundColor: "#263448", Zindex: '1000'}}>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '15px'}}>
               <XenahLogo style={{width: "10em", padding: '0.5em'}}/>
               <a href="/" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>Developers</Button></a>
@@ -18,15 +18,16 @@ const App = () => {
           </div>
         </nav>
 
-    
-      <Switch>
-        <Route path="/projects">
-          <AdminProjectsView/>
-        </Route>
-        <Route path="/">
-          <BrowseDevelopers/>
-        </Route>
-      </Switch>
+        <div style={{marginTop: '1em'}}>
+          <Switch>
+            <Route path="/projects">
+              <AdminProjectsView/>
+            </Route>
+            <Route path="/">
+              <BrowseDevelopers/>
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
   ) 
