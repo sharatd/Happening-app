@@ -15,11 +15,9 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
   const [commRating, setCommRating] = useState(developer.adminCommRating || 0);
 
   useEffect(() => {
-    setWorkRating(developer.adminWorkRating || 0);
-    setCommRating(developer.adminCommRating || 0);
-    console.log(workRating);
-    console.log(commRating);
-  }, developer);
+      setWorkRating(developer.adminWorkRating || 0);
+      setCommRating(developer.adminCommRating || 0);
+    }, developer);
 
   return (
     <Modal open={show} onClose={onClose}>
