@@ -15,6 +15,7 @@ const ProjectCard = ({ project }) => {
     xhttp.send();
 
     alert('Deleted project!');
+    window.location.reload()
   }
 
     return(
@@ -24,8 +25,8 @@ const ProjectCard = ({ project }) => {
                 <div style={{ display: 'flex', flexDirection: 'row'}}>
                   <h3 style={{margin: '0', padding: '0.5em'}}> { project.title } </h3>
                   <div style={{ marginLeft: 'auto', display: 'flex', flexDirection: 'row', gap: '5px'}}>
-                    <Button style={{width: 'fit-content', padding: '0.5em', color: ''}} onClick={() => setShowProjectApplicants(true)}>Developers</Button>
-                    <Button style={{width: 'fit-content', padding: '0.5em'}}>Edit</Button>
+                    <Button style={{width: 'fit-content', padding: '0.5em', color: ''}} onClick={() => setShowProjectApplicants(true)}>Edit Developers</Button>
+                    <Button style={{width: 'fit-content', padding: '0.5em'}}>Edit Project Info</Button>
                     <Button onClick={() => handleDelete()} style={{width: 'fit-content', padding: '0.5em', color: 'red'}}>X</Button>
                   </div>
                 </div>

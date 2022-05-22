@@ -3,16 +3,13 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
+import { technologyOptions, topicOptions } from '../utils/devInfoOptions'
 
 const AddProject = ({ onClose, showAddProject }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [technologies, setTechnologies] = useState([])
   const [topics, setTopics] = useState([]);
-  const topicOptions = ['App Dev', 'Web App Dev', 'Web Dev']
-  const technologyOptions = ['Swift', 'React', 'React Native', 'JavaScript', 'HTML', 
-                             'CSS', 'Flask', 'Django', 'nodeJS', 'Python', 'TensorFlow',
-                             'PyTorch', 'AWS', 'Firebase', 'SQL']
 
   const [checkedStateTopics, setCheckedStateTopics] = useState(
     new Array(topicOptions.length).fill(false)
@@ -86,6 +83,7 @@ const AddProject = ({ onClose, showAddProject }) => {
     alert('Added new project!');
 
     onClose();
+    window.location.reload()
 }
 
   return(
