@@ -12,10 +12,16 @@ import TextField from "@mui/material/TextField";
 import AttributeSliderGroup from './AttributeSliderGroup';
 
 
-const DeveloperInfo = ({ show, onClose, developer }) => {
+const DeveloperInfo = ({ onClose, developer }) => {
   const [workRating, setWorkRating] = useState(developer.adminWorkRating || 0);
   const [commRating, setCommRating] = useState(developer.adminCommRating || 0);
   const [adminNotes, setAdminNotes] = useState(developer.adminNotes || '');
+
+  const cancelNotesSubmit = () => {
+    setWorkRating(developer.adminWorkRating || 0);
+    setCommRating(developer.adminCommRating || 0);
+    setAdminNotes(developer.adminNotes || '')
+  }
 
   const handleNotesSubmit = () => {
     addRating(developer._id, "Comm", commRating);
@@ -29,8 +35,14 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
     alert('Notes on developer saved.');
   }
 
+  const isAdminNotesUpdated = (
+    workRating !== (developer.adminWorkRating || 0)
+    || commRating !== (developer.adminCommRating || 0)
+    || adminNotes !== (developer.adminNotes || '')
+  );
+
   return (
-    <Modal open={show} onClose={onClose}>
+    <Modal open={true} onClose={onClose}>
       <Box 
         sx={{
           position: 'absolute',
@@ -42,6 +54,8 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
           border: '2px solid #000',
           boxShadow: 24,
           p: 4,
+          maxHeight: '80vh',
+          overflowY: 'auto',
         }}
       >
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '2em' }}>
@@ -100,7 +114,7 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
         <h3 style={{textAlign: "center"}}>Admin Notes</h3>
         <div style={{display: "flex", justifyContent: "space-around"}}>
           <div style={{display: "flex", flexDirection: "column"}}>
-            <h4 style={{ margin: 0 }}>Work Ethtic</h4>
+            <h4 style={{ margin: 0 }}>Work Ethic</h4>
             <Rating
               name="simple-controlled"
               value={workRating}
@@ -139,7 +153,14 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
         />
         </div>
         
-        <Button onClick={() => handleNotesSubmit()} style={{backgroundColor: 'green', color: 'white'}}>Save notes</Button>
+        {
+          isAdminNotesUpdated && (
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2em', marginTop: '1em'}}>
+              <Button onClick={() => cancelNotesSubmit()} style={{backgroundColor: 'red', color: 'white'}}>Cancel</Button>
+              <Button onClick={() => handleNotesSubmit()} style={{backgroundColor: 'green', color: 'white'}}>Save Changes</Button>
+            </div>
+          )
+        }
 
         <div>
           <Button onClick={onClose}>Close</Button>

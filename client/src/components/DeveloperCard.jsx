@@ -50,11 +50,15 @@ const DeveloperCard = ({ developer }) => {
         </CardContent>
       </Card>
       
-      <DeveloperInfo
-        developer={developer}
-        show={showDeveloperInfo}
-        onClose={() => setShowDeveloperInfo(false)}
-      />
+      {
+        showDeveloperInfo && (
+          <DeveloperInfo
+            developer={developer}
+            show={showDeveloperInfo}
+            onClose={() => setShowDeveloperInfo(false)}
+          />
+        )
+      }
     </>
   )
 }
