@@ -7,6 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import Card from "@mui/material/Card";
 import Rating from "@mui/material/Rating";
 import { addRating } from "../utils/api";
+import TextField from "@mui/material/TextField";
 
 import AttributeSliderGroup from './AttributeSliderGroup';
 
@@ -16,13 +17,16 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
   const [commRating, setCommRating] = useState(developer.adminCommRating || 0);
   const [adminNotes, setAdminNotes] = useState(developer.adminNotes || '');
 
-  console.log(adminNotes);
+  const handleNotesSubmit = () => {
+    addRating(developer._id, "Comm", commRating);
+    addRating(developer._id, "Work", workRating);
 
-  const handleNotesSubmit = (text) => {
     const xhttp = new XMLHttpRequest();
     xhttp.open("PATCH", `http://localhost:8081/developers/adminNotes/${ developer._id }`, false);
     xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-    xhttp.send(JSON.stringify({ notes: text }));
+    xhttp.send(JSON.stringify({ notes: adminNotes }));
+
+    alert('Notes on developer saved.');
   }
 
   return (
@@ -102,7 +106,6 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
               value={workRating}
               onChange={(event, newValue) => {
                 if (newValue) {
-                  addRating(developer._id, "work", newValue);
                   setWorkRating(newValue);
                 }
               }}
@@ -116,7 +119,6 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
               value={commRating}
               onChange={(event, newValue) => {
                 if (newValue) {
-                  addRating(developer._id, "Comm", newValue);
                   setCommRating(newValue);
                 }
               }}
@@ -124,6 +126,20 @@ const DeveloperInfo = ({ show, onClose, developer }) => {
             />
           </div>
         </div>
+
+        <div>
+        <TextField
+          multiline
+          rows={4}
+          label="Admin notes on developer"
+          value={adminNotes}
+          onChange={(e)=>setAdminNotes(e.target.value)}
+          sx={{width: '100%',
+              marginTop: '2em'}}
+        />
+        </div>
+        
+        <Button onClick={() => handleNotesSubmit()} style={{backgroundColor: 'green', color: 'white'}}>Save notes</Button>
 
         <div>
           <Button onClick={onClose}>Close</Button>
