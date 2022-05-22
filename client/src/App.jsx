@@ -11,6 +11,14 @@ const App = () => {
  
 const [user] = useUserState();
 
+if (user === 'loading') {
+  return (
+    <h1>
+      loading user...
+    </h1>
+  )
+}
+
 const ProtectedRedirect = ({ component }) => (
   user ? component :  <Redirect to = "/login"/>
 );
@@ -29,7 +37,7 @@ const ProtectedRedirect = ({ component }) => (
         <div style={{marginTop: '1em'}}>
           <Switch>
             <Route path="/projects">
-              <ProtectedRedirect component={ <AdminProjectsView/> } />
+              {user ? <AdminProjectsView/> :  <Redirect to = "/login"/>}
             </Route>
             <Route path="/login">
               <Login/>
