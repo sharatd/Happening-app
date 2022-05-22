@@ -9,7 +9,11 @@ import Login from "./components/Login";
 
 const App = () => {
  
-const [user] = useUserState()
+const [user] = useUserState();
+
+const ProtectedRedirect = ({ component }) => (
+  user ? component :  <Redirect to = "/login"/>
+);
 
   return (
     <Router>
@@ -25,18 +29,13 @@ const [user] = useUserState()
         <div style={{marginTop: '1em'}}>
           <Switch>
             <Route path="/projects">
-              {
-                user ? <AdminProjectsView/> :  <Redirect to = "/login"/>
-              }
-            </Route>
-            <Route path="/navigate">
-              <Redirect to = "/projects"/>
+              <ProtectedRedirect component={ <AdminProjectsView/> } />
             </Route>
             <Route path="/login">
               <Login/>
             </Route>
             <Route path="/">
-              <BrowseDevelopers/>
+            <ProtectedRedirect component={ <BrowseDevelopers/> } />
             </Route>
           </Switch>
         </div>
