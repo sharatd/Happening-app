@@ -1,12 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { ReactComponent as XenahLogo } from "./Xenah Logos/SVG/xenah_logo-full.svg"
 import AdminProjectsView from "./components/AdminProjectsView";
 import BrowseDevelopers from "./components/BrowseDevelopers";
 import Button from '@mui/material/Button';
+import { useUserState } from "./utils/firebase";
+import Login from "./components/Login";
 
 const App = () => {
  
+const [user] = useUserState()
+
   return (
     <Router>
       <div>
@@ -21,10 +25,15 @@ const App = () => {
         <div style={{marginTop: '1em'}}>
           <Switch>
             <Route path="/projects">
-              <AdminProjectsView/>
+              {
+                user ? <AdminProjectsView/> :  <Redirect to = "/login"/>
+              }
             </Route>
             <Route path="/navigate">
-              <Navigate replace to = "/projects"/>
+              <Redirect to = "/projects"/>
+            </Route>
+            <Route path="/login">
+              <Login/>
             </Route>
             <Route path="/">
               <BrowseDevelopers/>
