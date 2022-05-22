@@ -56,13 +56,17 @@ const DeveloperCard = ({ developer }) => {
           </div>
         </CardContent>
       </Card>
-
+      
       <AddDevToProjectForm showProjectForm={showProjectForm} onClose={() => setShowProjectForm(false)}/>
-      <DeveloperInfo
-        developer={developer}
-        show={showDeveloperInfo}
-        onClose={() => setShowDeveloperInfo(false)}
-      />
+      {
+        showDeveloperInfo && (
+          <DeveloperInfo
+            developer={developer}
+            show={showDeveloperInfo}
+            onClose={() => setShowDeveloperInfo(false)}
+          />
+        )
+      }
     </>
   )
 }
