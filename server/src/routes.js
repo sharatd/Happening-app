@@ -24,7 +24,8 @@ router.route("/projects")
   .get((req, res) => {
     Project.find({}).then(async (projectEntries) => {
       const projects = await Promise.all(projectEntries.map(async (project) => {
-        const developers = await Project.find({ _id: { $in: project.developers }});
+        console.log(project.developers)
+        const developers = await Developer.find({ _id: { $in: project.developers }});
         return {...project._doc, developers: developers}
       }));
       res.status(200).send({ projects: projects });
@@ -60,13 +61,29 @@ router.route("/projects/:pid")
       });
   });
 
-router.route("/projects/:pid/addDeveloper/:did")
+router.route("/projects/:pid/modifyDevelopers/:did")
   .post((req, res) => {
     const { pid, did } = req.params;
     Project.findById(pid).then((data) => {
-      if (data.developers.some(developer => (developer.id === did))) {
-        Project.updateOne({ id: pid }, {$push: { developers : [did] }})
+      if (data.developers.some(developer => (developer.toString() === did)) == false) {
+        data.developers = [...data.developers, did]
       }
+      data.save()
+    })
+    .then((success) => {
+      res.status(204).send()
+    })
+  })
+  .delete((req, res) => {
+    const { pid, did } = req.params;
+    Project.findById(pid).then((data) => {
+      if (data.developers.some(developer => (developer.toString() === did))) {
+        data.developers = data.developers.filter((objectId) => (objectId.toString() != did))
+      }
+      data.save()
+    })
+    .then((success) => {
+      res.status(200).send()
     })
   });
 
