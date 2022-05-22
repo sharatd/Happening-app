@@ -4,21 +4,9 @@ import MultipleSelectForm from "./form_components/MultipleSelectForm";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
+import { levelOptions, technologyOptions, timeOptions, topicOptions, universityOptions } from '../utils/devInfoOptions'
 
 const FilterForm = ({ showFilterForm, onClose, setFilters }) => {
-  const levelOptions = ['L1', 'L2', 'L3', 'L4', 'L5']
-
-  const technologyOptions = ['Swift', 'React', 'React Native', 'JavaScript', 'HTML', 
-                            'CSS', 'Flask', 'Django', 'nodeJS', 'Python', 'TensorFlow',
-                            'PyTorch', 'AWS', 'Firebase', 'SQL']
-
-  const timeOptions = ['3+', '5+', '7+', '9+']
-  
-  const topicOptions = ['App Dev', 'Web App Dev', 'Web Dev']
-
-  const universityOptions = ['Northwestern University', 'University of Chicago', 'Duke University', 'Dartmouth College']
-
-
   const [selectedLevels, setSelectedLevels] = useState([]);
   const [selectedTechnologies, setSelectedTechnologies] = useState([]);
   const [preferredLanguage, setPreferredLanguage] = useState('');
