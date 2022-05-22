@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Navigate } from "react-router-dom";
 import { ReactComponent as XenahLogo } from "./Xenah Logos/SVG/xenah_logo-full.svg"
 import AdminProjectsView from "./components/AdminProjectsView";
 import BrowseDevelopers from "./components/BrowseDevelopers";
@@ -22,6 +22,9 @@ const App = () => {
           <Switch>
             <Route path="/projects">
               <AdminProjectsView/>
+            </Route>
+            <Route path="/navigate">
+              <Navigate replace to = "/projects"/>
             </Route>
             <Route path="/">
               <BrowseDevelopers/>
