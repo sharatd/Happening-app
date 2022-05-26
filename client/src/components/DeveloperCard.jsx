@@ -57,7 +57,7 @@ const DeveloperCard = ({ developer }) => {
         </CardContent>
       </Card>
       
-      <AddDevToProjectForm showProjectForm={showProjectForm} onClose={() => setShowProjectForm(false)}/>
+      <AddDevToProjectForm showProjectForm={showProjectForm} onClose={() => setShowProjectForm(false)} developer={developer} />
       {
         showDeveloperInfo && (
           <DeveloperInfo

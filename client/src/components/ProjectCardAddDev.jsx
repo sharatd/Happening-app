@@ -1,23 +1,45 @@
 import React, {useState} from "react";
 import ProjectApplicants from "./ProjectApplicants";
-import ModifyProject from "./ModifyProject";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from '@mui/material/Button';
 import Chip from "@mui/material/Chip";
 
 
-const ProjectCard = ({ project }) => {
+const ProjectCardAddDev = ({ project, developer }) => {
   const [showProjectApplicants, setShowProjectApplicants] = useState(false)
-  const [showModifyProject, setShowModifyProject] = useState(false);
-  
-  const handleDelete = () => {
+  const [isInProject, setIsInProject] = useState(project.developers.some(dev => dev._id === developer._id))
+
+  const handleAddDeveloper = () => {
     const xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", `https://xenah-dev-portal.herokuapp.com/projects/${project._id}`, false);
+    xhttp.open("POST", `https://xenah-dev-portal.herokuapp.com/projects/${project._id}/modifyDevelopers/${developer._id}`, false);
     xhttp.send();
 
-    alert('Deleted project!');
-    window.location.reload()
+    alert(`Added ${developer.name} to ${project.title}`);
+    setIsInProject(true);
+  }
+
+  const handleDeleteDeveloper = () => {
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", `https://xenah-dev-portal.herokuapp.com/projects/${project._id}/modifyDevelopers/${developer._id}`, false);
+    xhttp.send();
+
+    alert(`Removed ${developer.name} from ${project.title}`);
+    setIsInProject(false);
+  }
+
+  const AddButton = () => {
+      return(<Button onClick={() => handleAddDeveloper()} style={{width: 'fit-content', padding: '0.5em', backgroundColor: 'green', color: 'white'}}
+             >
+                Add {developer.name} To Project
+             </Button>)
+  }
+
+  const DeleteButton = () => {
+    return(<Button onClick={() => handleDeleteDeveloper()} style={{width: 'fit-content', padding: '0.5em', backgroundColor: 'red', color: 'white'}}
+    >
+       Remove {developer.name} From Project
+    </Button>)
   }
 
     return(
@@ -27,9 +49,9 @@ const ProjectCard = ({ project }) => {
                 <div style={{ display: 'flex', flexDirection: 'row'}}>
                   <h3 style={{margin: '0', padding: '0.5em'}}> { project.title } </h3>
                   <div style={{ marginLeft: 'auto', display: 'flex', flexDirection: 'row', gap: '5px'}}>
-                    <Button style={{width: 'fit-content', padding: '0.5em', color: ''}} onClick={() => setShowProjectApplicants(true)}>Edit Developers</Button>
-                    <Button style={{width: 'fit-content', padding: '0.5em'}} onClick={() => setShowModifyProject(true)}>Edit Project Info</Button>
-                    <Button onClick={() => handleDelete()} style={{width: 'fit-content', padding: '0.5em', color: 'red'}}>X</Button>
+                    {
+                        isInProject ? <DeleteButton  /> : <AddButton />
+                    }
                   </div>
                 </div>
                 <div style={{display: 'flex', flexFlow: 'wrap', alignItems: 'center'}}>
@@ -46,9 +68,8 @@ const ProjectCard = ({ project }) => {
             </CardContent>
           </Card>
           <ProjectApplicants project={project} onClose={() => setShowProjectApplicants(false)} showProjectApplicants={showProjectApplicants}/>  
-          <ModifyProject onClose={() => setShowModifyProject(false)} showModifyProject={showModifyProject} project={project}/>
         </>
       )
 }
 
-export default ProjectCard; 
+export default ProjectCardAddDev; 

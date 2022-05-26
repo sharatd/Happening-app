@@ -11,6 +11,8 @@ const AdminProjectsView = () => {
     
     if (error) return <h1>{error}</h1>;
     if (loading) return <h1>Loading the projects...</h1>;
+
+    console.log(projects);
     
     return(
         <div>

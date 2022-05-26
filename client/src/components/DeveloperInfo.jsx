@@ -28,7 +28,7 @@ const DeveloperInfo = ({ onClose, developer }) => {
     addRating(developer._id, "Work", workRating);
 
     const xhttp = new XMLHttpRequest();
-    xhttp.open("PATCH", `http://localhost:8081/developers/adminNotes/${ developer._id }`, false);
+    xhttp.open("PATCH", `https://xenah-dev-portal.herokuapp.com/developers/adminNotes/${ developer._id }`, false);
     xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
     xhttp.send(JSON.stringify({ notes: adminNotes }));
 
