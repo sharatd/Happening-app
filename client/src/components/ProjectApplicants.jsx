@@ -27,7 +27,7 @@ const ProjectApplicants = ({ project, onClose, showProjectApplicants }) => {
         <h2 style={{ textAlign: 'center' }}>{project.developers.length === 0 ? 'No Developers' : 'Developers:'}</h2>
         <div style={{display:'flex', flexDirection: 'row', flexWrap:'wrap', justifyContent: 'space-evenly'}}>
           {project.developers.map((developer, index) => (
-            <ProjectDeveloperCard developer={developer} projectId={project._id}/>
+            <ProjectDeveloperCard key={index} developer={developer} projectId={project._id}/>
           ))}
         </div>
       </Box>

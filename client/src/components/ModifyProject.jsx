@@ -114,7 +114,7 @@ const ModifyProject = ({ onClose, showModifyProject, project }) => {
           <TextField required label="Title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
           <TextField required multiline rows={4} label="Description" value={description} onChange={(e)=>setDescription(e.target.value)} />
           <div>
-            <text>Topics:</text>
+            <div>Topics:</div>
             <RenderCheckBox options={topicOptions} 
                             checkedState={checkedStateTopics} 
                             setCheckedState={setCheckedStateTopics}
@@ -122,7 +122,7 @@ const ModifyProject = ({ onClose, showModifyProject, project }) => {
             />
           </div>
           <div>
-            <text>Technologies:</text>
+            <div>Technologies:</div>
             <RenderCheckBox options={technologyOptions} 
                             checkedState={checkedStateTechnologies} 
                             setCheckedState={setCheckedStateTechnologies}
