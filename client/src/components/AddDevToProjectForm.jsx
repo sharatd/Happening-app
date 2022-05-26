@@ -1,13 +1,16 @@
 import React from "react";
-//import BasicSelectForm from "./form_components/BasicSelectForm";
-//import MultipleSelectForm from "./form_components/MultipleSelectForm";
+import { useProjects } from '../utils/api';
+import ProjectCardAddDev from './ProjectCardAddDev';
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-//import Button from '@mui/material/Button';
 
 //This form will allow admins to add a dev to a project. Todo: call the useEffect to get project and render a list of projects
 //to add the developer to 
-const AddDevToProjectForm = ({ showProjectForm, onClose }) => {
+const AddDevToProjectForm = ({ showProjectForm, onClose, developer }) => {
+  let [projects, loading, error] = useProjects();
+    
+  if (error) return <div></div>;
+  if (loading) return <div></div>;
 
   return(
     <Modal open={ showProjectForm } onClose={ onClose }>
@@ -28,7 +31,11 @@ const AddDevToProjectForm = ({ showProjectForm, onClose }) => {
           overflowY: 'auto'
         }}
       >
-        <h1>TODO: Add list of projects and buttons to add dev to project</h1>
+        <div style={{ diplsay: 'flex', flexDirection: 'column' }}>
+        {projects.map((project, index) => (
+          <ProjectCardAddDev key={index} project={project} developer={developer}/>
+        ))}
+        </div>
       </Box>
     </Modal>
   )

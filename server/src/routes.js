@@ -55,10 +55,26 @@ router.route("/projects")
 router.route("/projects/:pid")
   .delete((req, res) => {
     const { pid } = req.params;
+
     Project.findByIdAndDelete(pid)
       .then((success) => {
         res.status(204).send();
       });
+  })
+  .post((req, res) => {
+    const { pid } = req.params;
+    const { body } = req
+    Project.findById(pid).then((data) => {
+      data.title = body.title
+      data.description = body.description
+      data.technologies = body.technologies
+      data.topics = body.topics
+      data.developers = body.developers
+      data.save()
+    })
+    .then((success) => {
+      res.status(204).send()
+    })
   });
 
 router.route("/projects/:pid/modifyDevelopers/:did")
