@@ -56,6 +56,7 @@ export const useProjects = () => {
 }
 
 export const addRating = (developerId, stat, rating) => {
+  console.log(`Add rating of ${rating}`)
   const options = {
     method: 'PATCH',
   };

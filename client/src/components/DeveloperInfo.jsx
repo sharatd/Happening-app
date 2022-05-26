@@ -24,8 +24,8 @@ const DeveloperInfo = ({ onClose, developer }) => {
   }
 
   const handleNotesSubmit = () => {
-    addRating(developer._id, "Comm", commRating);
-    addRating(developer._id, "Work", workRating);
+    addRating(developer._id, "womm", commRating);
+    addRating(developer._id, "work", workRating);
 
     const xhttp = new XMLHttpRequest();
     xhttp.open("PATCH", `https://xenah-dev-portal.herokuapp.com/developers/adminNotes/${ developer._id }`, false);
@@ -33,6 +33,7 @@ const DeveloperInfo = ({ onClose, developer }) => {
     xhttp.send(JSON.stringify({ notes: adminNotes }));
 
     alert('Notes on developer saved.');
+    window.location.reload();
   }
 
   const isAdminNotesUpdated = (
