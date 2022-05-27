@@ -170,4 +170,22 @@ router.route('/developers/adminNotes/:did')
   });
 
 
+
+//
+// +----------------+
+// |    CORE API    |
+// +----------------+
+//
+
+router.route('/developerLogin')
+  .post((req, res) => {
+    const { email } = req.body;
+
+    Developer.findOne({ email })
+      .then(developer => {
+        // developer is null if account hasn't been created yet
+        res.status(200).send({ developer })
+      });
+  });
+
 module.exports = router;
