@@ -6,9 +6,9 @@ const PublicComponent = () => {
   
   return (
     <Switch>
-      <Redirect to='/login'/>
-      <Route path="/login" component={Login} />
-      <Redirect to='/' />
+      {/* <Redirect to='/login'/> */}
+      <Route path="/" component={Login} />
+      {/* <Redirect to='/' /> */}
     </Switch>
   )
 }

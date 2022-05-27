@@ -30,13 +30,15 @@ const ProtectedRedirect = ({ component }) => (
   return (
     <Router>
       <div>
-        <nav style={{ display: 'flex', padding: '10px', flexDirection: 'row', width: "100%", top: "0", backgroundColor: "#263448", Zindex: '1000'}}>
+        <nav style={{ justifyContent: 'space-between', display: 'flex', padding: '10px', flexDirection: 'row', width: "100vw", top: "0", backgroundColor: "#263448", Zindex: '1000'}}>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '15px'}}>
               <XenahLogo style={{width: "10em", padding: '0.5em'}}/>
               <a href="/" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>Developers</Button></a>
               <a href="/projects" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>View Projects</Button></a>
-              <Button onClick={() => firebaseSignOut()}>Sign Out</Button>
           </div>
+          {
+            user && <Button style={{width: 'fit-content', padding: '0 2em', color: 'white'}} onClick={() => firebaseSignOut()}>Sign Out</Button>
+          }
         </nav>
 
         <div style={{marginTop: '1em'}}>
