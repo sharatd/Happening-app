@@ -13,7 +13,7 @@ const PrivateComponent = ({user}) => {
   //console.log(user.email)
 
   useEffect(() => {
-    const adminEmails = ['will@xenah.dev', 'quintonnickum2022@u.northwestern.edu', 'jacksonmiller2023@u.northwestern.edu', 'yabiayele2023@u.northwestern.edu'];
+    const adminEmails = ['will@xenah.dev', 'quintonnickum2022@u.northwestern.edu', 'jacksonmiller2023@u.northwestern.edu', 'yabiayele2023@u.northwestern.edu','rutujakajave2022@u.northwestern.edu'];
     if (adminEmails.includes(user.email)) {
       console.log("entered if branch")
       setAccountInfo({ role: 'admin'});
