@@ -4,12 +4,14 @@ import { ReactComponent as XenahLogo } from "./Xenah Logos/SVG/xenah_logo-full.s
 import AdminProjectsView from "./components/AdminProjectsView";
 import BrowseDevelopers from "./components/BrowseDevelopers";
 import Button from '@mui/material/Button';
-import { useUserState } from "./utils/firebase";
+import { useUserState, firebaseSignOut } from "./utils/firebase";
 import Login from "./components/Login";
 
 const App = () => {
  
 const [user] = useUserState();
+
+console.log(user);
 
 if (user === 'loading') {
   return (
@@ -31,19 +33,21 @@ const ProtectedRedirect = ({ component }) => (
               <XenahLogo style={{width: "10em", padding: '0.5em'}}/>
               <a href="/" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>Developers</Button></a>
               <a href="/projects" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>View Projects</Button></a>
+              <Button onClick={() => firebaseSignOut()}>Sign Out</Button>
           </div>
         </nav>
 
         <div style={{marginTop: '1em'}}>
           <Switch>
             <Route path="/projects">
-              {user ? <AdminProjectsView/> :  <Redirect to = "/login"/>}
+              {user ? <AdminProjectsView/> :  <Redirect to="/login"/>}
             </Route>
             <Route path="/login">
-              <Login/>
+              {user ? <Redirect to="/"/> : <Login/>}
             </Route>
             <Route path="/">
-            <ProtectedRedirect component={ <BrowseDevelopers/> } />
+              {user ? <BrowseDevelopers/> : <Redirect to = "/login"/>}
+              {/*<ProtectedRedirect component={ <BrowseDevelopers/> } />*/}
             </Route>
           </Switch>
         </div>
