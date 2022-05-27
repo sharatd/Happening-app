@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from 'react-router-dom';
-import BrowseDevelopers from "./BrowseDevelopers";
-import AdminProjectsView from "./AdminProjectsView";
 import { useUserState } from '../utils/firebase';
 import { login } from '../utils/api';
+import AdminComponent from "./AdminComponent";
+import DeveloperComponent from './DeveloperComponent';
 
 const PrivateComponent = () => {
   const [user] = useUserState();
-  const [accountInfo, setAccountInfo] = useState('loading');
+  const [accountInfo, setAccountInfo] = useState(null);
+  console.log('USER BELOW')
+  console.log(user.email)
 
   useEffect(() => {
-    const adminEmails = ['will@xenah.dev'];
+    const adminEmails = ['will@xenah.dev', 'quintonnickum2022@u.northwestern.edu'];
     if (adminEmails.includes(user.email)) {
       setAccountInfo({ role: 'admin'});
 
     } else {
-
       login(user.email)
         .then((devInfo) => {
           console.log('devinfo', devInfo);
@@ -24,20 +24,14 @@ const PrivateComponent = () => {
     }
   }, [user]);
 
-  if (accountInfo === 'loading')
+  console.log('Account info', accountInfo)
+  if (accountInfo === null)
     return <h1>Loading...</h1>;
 
-  if (!accountInfo) {
-    // Show sign-up form
-    // Have callback to setAccountInfo when submitting form
-    return <h1>Dev sign up form...</h1>
-  }
-
   return (
-    <Switch>
-      <Route path="/projects" component={AdminProjectsView}/> 
-      <Route path="/" component={BrowseDevelopers}/> 
-    </Switch>
+    <div>
+      { accountInfo.role === 'admin' ? <AdminComponent/> : <DeveloperComponent/> }
+    </div>
   );
 }
 
