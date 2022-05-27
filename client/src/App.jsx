@@ -1,11 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { ReactComponent as XenahLogo } from "./Xenah Logos/SVG/xenah_logo-full.svg"
-import AdminProjectsView from "./components/AdminProjectsView";
-import BrowseDevelopers from "./components/BrowseDevelopers";
 import Button from '@mui/material/Button';
 import { useUserState, firebaseSignOut } from "./utils/firebase";
-import Login from "./components/Login";
 import PrivateComponent from "./components/PrivateComponent";
 import PublicComponent from "./components/PublicComponent";
 
@@ -23,10 +20,6 @@ if (user === 'loading') {
   )
 }
 
-const ProtectedRedirect = ({ component }) => (
-  user ? component :  <Redirect to = "/login"/>
-);
-
   return (
     <Router>
       <div>
@@ -37,25 +30,12 @@ const ProtectedRedirect = ({ component }) => (
               <a href="/projects" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>View Projects</Button></a>
           </div>
           {
-            user && <Button style={{width: 'fit-content', padding: '0 2em', color: 'white'}} onClick={() => firebaseSignOut()}>Sign Out</Button>
+            user && <Button style={{width: 'fit-content', padding: '0 2em', color: 'white'}} onClick={() => window.confirm("Are you sure you want to sign out?") && firebaseSignOut()}>Sign Out</Button>
           }
         </nav>
 
         <div style={{marginTop: '1em'}}>
-        {user ? <PrivateComponent/> : <PublicComponent/>}
-          {/* <Switch>
-            <Route path="/projects">
-              {user ? <AdminProjectsView/> :  <Redirect to="/login"/>}
-            </Route>
-            <Route path="/login">
-              {user ? <Redirect to="/"/> : <Login/>}
-            </Route>
-            <Route path="/">
-              {user ? <BrowseDevelopers/> : <Redirect to = "/login"/>}
-              {/*<ProtectedRedirect component={ <BrowseDevelopers/> } />
-            </Route>
-          </Switch> */}
-
+          { user ? <PrivateComponent/> : <PublicComponent/> }
         </div>
       </div>
     </Router>
