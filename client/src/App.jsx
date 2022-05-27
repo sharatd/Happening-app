@@ -6,6 +6,8 @@ import BrowseDevelopers from "./components/BrowseDevelopers";
 import Button from '@mui/material/Button';
 import { useUserState, firebaseSignOut } from "./utils/firebase";
 import Login from "./components/Login";
+import PrivateComponent from "./components/PrivateComponent";
+import PublicComponent from "./components/PublicComponent";
 
 const App = () => {
  
@@ -38,7 +40,8 @@ const ProtectedRedirect = ({ component }) => (
         </nav>
 
         <div style={{marginTop: '1em'}}>
-          <Switch>
+        {user ? <PrivateComponent/> : <PublicComponent/>}
+          {/* <Switch>
             <Route path="/projects">
               {user ? <AdminProjectsView/> :  <Redirect to="/login"/>}
             </Route>
@@ -47,9 +50,10 @@ const ProtectedRedirect = ({ component }) => (
             </Route>
             <Route path="/">
               {user ? <BrowseDevelopers/> : <Redirect to = "/login"/>}
-              {/*<ProtectedRedirect component={ <BrowseDevelopers/> } />*/}
+              {/*<ProtectedRedirect component={ <BrowseDevelopers/> } />
             </Route>
-          </Switch>
+          </Switch> */}
+
         </div>
       </div>
     </Router>
