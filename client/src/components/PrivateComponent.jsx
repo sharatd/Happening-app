@@ -13,7 +13,7 @@ const PrivateComponent = ({user}) => {
   //console.log(user.email)
 
   useEffect(() => {
-    const adminEmails = ['will@xenah.dev', 'quintonnickum2022@u.northwestern.edu', 'jacksonmiller2023@u.northwestern.edu'];
+    const adminEmails = ['will@xenah.dev', 'quintonnickum2022@u.northwestern.edu', 'jacksonmiller2023@u.northwestern.edu', 'yabiayele2023@u.northwestern.edu'];
     if (adminEmails.includes(user.email)) {
       console.log("entered if branch")
       setAccountInfo({ role: 'admin'});
@@ -27,14 +27,21 @@ const PrivateComponent = ({user}) => {
         });
     }
   }, [user]);
+  
 
-  console.log('Account info', accountInfo)
   if (accountInfo === null)
-    return <ModifyDeveloperForm/>;
+    return (
+      <>
+        <NavBar user={user} accountInfo={accountInfo}/>
+        <div style={{marginTop: '1em'}}>
+          <ModifyDeveloperForm/>;
+        </div>
+      </>
+    )
 
   return (
     <div>
-      <NavBar user={user}/>
+      <NavBar user={user} accountInfo={accountInfo}/>
       <div style={{marginTop: "1em"}}>
         { accountInfo.role === 'admin' ? <AdminComponent/> : <DeveloperComponent/> }
       </div>
