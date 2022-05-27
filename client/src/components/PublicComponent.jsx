@@ -1,16 +1,14 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Login from "./Login";
 
 const PublicComponent = () => {
   
   return (
     <Switch>
-      {/* <Redirect to='/login'/> */}
       <Route path="/" component={Login} />
-      {/* <Redirect to='/' /> */}
     </Switch>
-  )
+  );
 }
 
 export default PublicComponent;
