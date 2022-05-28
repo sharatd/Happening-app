@@ -9,10 +9,8 @@ const AdminProjectsView = () => {
     const [projects, loading, error] = useProjects();
     const [showAddProject, setShowAddProject] = useState(false);
     
-    if (error) return <h1>{error}</h1>;
-    if (loading) return <h1>Loading the projects...</h1>;
-
-    console.log(projects);
+    if (error) return <div></div>;
+    if (loading) return <h1 style={{margin: '1em'}}>Loading the projects...</h1>;
     
     return(
         <div>

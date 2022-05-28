@@ -1,36 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { useUserState } from '../utils/firebase';
 import { login } from '../utils/api';
 import AdminComponent from "./AdminComponent";
 import DeveloperComponent from './DeveloperComponent';
+import ModifyDeveloperForm from "./ModifyDeveloperForm";
+import NavBar from "./NavBar";
+import { adminEmails } from '../utils/adminEmails';
 
-const PrivateComponent = () => {
-  const [user] = useUserState();
+const PrivateComponent = ({user}) => {
   const [accountInfo, setAccountInfo] = useState(null);
-  console.log('USER BELOW')
-  console.log(user.email)
 
   useEffect(() => {
-    const adminEmails = ['will@xenah.dev', 'quintonnickum2022@u.northwestern.edu'];
     if (adminEmails.includes(user.email)) {
       setAccountInfo({ role: 'admin'});
 
     } else {
       login(user.email)
         .then((devInfo) => {
-          console.log('devinfo', devInfo);
           setAccountInfo(devInfo);
         });
     }
   }, [user]);
+  
 
-  console.log('Account info', accountInfo)
   if (accountInfo === null)
-    return <h1>Loading...</h1>;
+    return (
+      <>
+        <NavBar user={user} accountInfo={accountInfo}/>
+        <div style={{marginTop: '1em'}}>
+          <ModifyDeveloperForm user={user} accountInfo={null}/>;
+        </div>
+      </>
+    )
 
   return (
     <div>
-      { accountInfo.role === 'admin' ? <AdminComponent/> : <DeveloperComponent/> }
+      <NavBar user={user} accountInfo={accountInfo}/>
+      <div style={{marginTop: "1em"}}>
+        { accountInfo.role === 'admin' ? <AdminComponent/> : <DeveloperComponent user={user} accountInfo={accountInfo}/> }
+      </div>
     </div>
   );
 }

@@ -18,8 +18,8 @@ const BrowseDevelopers = () => {
   });
   const [showFilterForm, setShowFilterForm] = useState(false);
 
-  if (error) return <h1>{error}</h1>;
-  if (loading) return <h1>Loading the developers...</h1>;
+  if (error) return <div></div>;
+  if (loading) return <h1 style={{margin: '1em'}}>Loading the developers...</h1>;
 
   const numElementsShared = (arr1, arr2) => (
     arr2.length === 0 ? 1: arr1.reduce((acc, val) => (arr2.includes(val.name) ? acc + 1 : acc), 0)
@@ -77,8 +77,6 @@ const BrowseDevelopers = () => {
   //   .filter(([count, _]) => count > 0)
   //   .filter(([_, developer]) => filters.universities.includes(developer.university))
   //   .map(([_, developer]) => developer);
-  
-  console.log(filters)
 
   return (
     <div>
