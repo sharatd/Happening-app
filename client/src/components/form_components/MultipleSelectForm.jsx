@@ -31,7 +31,7 @@ const MultipleSelectForm = ({ options, state, setState, label }) => {
     };
   
     return(
-      <FormControl sx={{ m: 1, width: '100%' }}>
+      <FormControl sx={{ m: 1, width: '98%' }}>
           <InputLabel>{label}</InputLabel>
           <Select
             multiple

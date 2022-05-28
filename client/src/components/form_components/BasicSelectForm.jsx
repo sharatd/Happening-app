@@ -11,16 +11,13 @@ const BasicSelectForm = ({options, state, setState, label }) => {
     }
   
     return(
-      <FormControl sx={{ m: 1, width: '100%' }}>
+      <FormControl sx={{ m: 1, width: '98%' }}>
         <InputLabel>{label}</InputLabel>
         <Select
           value={state}
           label={label}
           onChange={handleChange}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           {options.map((name) => (
               <MenuItem
                 key={name}

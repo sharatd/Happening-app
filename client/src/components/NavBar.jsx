@@ -6,7 +6,7 @@ import { firebaseSignOut } from "../utils/firebase";
 
 const NavBar = ({user, accountInfo}) => {
   return (
-    <nav style={{ justifyContent: 'space-between', display: 'flex', padding: '10px', flexDirection: 'row', width: "100vw", top: "0", backgroundColor: "#263448", Zindex: '1000'}}>
+    <nav style={{ justifyContent: 'space-between', padding: '10px 0px 10px 0px', display: 'flex', flexDirection: 'row', width: "100%", top: "0", backgroundColor: "#263448", Zindex: '1000'}}>
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '15px'}}>
         <XenahLogo style={{width: "10em", padding: '0.5em'}}/>
         { accountInfo?.role === 'admin' &&
@@ -23,7 +23,7 @@ const NavBar = ({user, accountInfo}) => {
         }
       </div>
       {
-        user && <Button style={{width: 'fit-content', padding: '0 2em', color: 'white'}} onClick={() => window.confirm("Are you sure you want to sign out?") && firebaseSignOut()}>Sign Out</Button>
+        user && <Button style={{width: 'fit-content', padding: '0em 2em 0em 0em', margin: '0em', color: 'white'}} onClick={() => window.confirm("Are you sure you want to sign out?") && firebaseSignOut()}>Sign Out</Button>
       }
     </nav>
   )

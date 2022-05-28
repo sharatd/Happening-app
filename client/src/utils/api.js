@@ -11,7 +11,6 @@ export const useDevelopers = () => {
   useEffect(() => {
     const abortController = new AbortController();
 
-    console.log("Fetching new data");
     fetch(`${BASE_URL}/developers`, { signal: abortController.signal })
       .then((res) => res.json())
       .then((res) => {
@@ -37,7 +36,6 @@ export const useProjects = () => {
   useEffect(() => {
     const abortController = new AbortController();
 
-    console.log("Fetching projects");
     fetch(`${BASE_URL}/projects`, { signal: abortController.signal })
       .then((res) => res.json())
       .then((res) => {
@@ -56,7 +54,6 @@ export const useProjects = () => {
 };
 
 export const addRating = (developerId, stat, rating) => {
-  console.log(`Add rating of ${rating}`);
   const options = {
     method: "PATCH",
   };

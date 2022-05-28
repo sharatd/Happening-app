@@ -23,7 +23,6 @@ router
     Project.find({}).then(async (projectEntries) => {
       const projects = await Promise.all(
         projectEntries.map(async (project) => {
-          console.log(project.developers);
           const developers = await Developer.find({
             _id: { $in: project.developers },
           });
