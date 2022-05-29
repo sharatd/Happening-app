@@ -16,27 +16,31 @@ const PrivateComponent = ({user}) => {
     } else {
       login(user.email)
         .then((devInfo) => {
-          setAccountInfo(devInfo);
+          if (devInfo !== null) {
+            const addRole = {...devInfo, role: 'developer'};
+            setAccountInfo(addRole);
+          } else {
+            setAccountInfo(devInfo)
+          }
         });
     }
   }, [user]);
   
-
   if (accountInfo === null)
     return (
-      <>
+      <div style={{marginBottom: '6em'}}>
         <NavBar user={user} accountInfo={accountInfo}/>
         <div style={{marginTop: '1em'}}>
           <ModifyDeveloperForm user={user} accountInfo={null}/>;
         </div>
-      </>
+      </div>
     )
 
   return (
-    <div>
+    <div style={{marginBottom: '6em'}}>
       <NavBar user={user} accountInfo={accountInfo}/>
       <div style={{marginTop: "1em"}}>
-        { accountInfo.role === 'admin' ? <AdminComponent/> : <DeveloperComponent user={user} accountInfo={accountInfo}/> }
+        { accountInfo?.role === 'admin' ? <AdminComponent/> : <DeveloperComponent user={user} accountInfo={accountInfo}/> }
       </div>
     </div>
   );

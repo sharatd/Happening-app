@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 
 const AdminProjectsView = () => {
 
-    const [projects, loading, error] = useProjects();
+    let [projects, loading, error] = useProjects();
     const [showAddProject, setShowAddProject] = useState(false);
     
     if (error) return <div></div>;
