@@ -17,7 +17,7 @@ const NavBar = ({user, accountInfo}) => {
         }
         { accountInfo?.role === 'developer' &&
           <>
-            <a href="/" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>Modify My Info</Button></a>
+            <a href="/myinfo" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>Modify My Info</Button></a>
             <a href="/" style={{textDecoration: 'none'}}><Button style={{width: 'fit-content', padding: '0.5em', color: 'white'}}>Apply To Projects</Button></a>
           </>
         }
