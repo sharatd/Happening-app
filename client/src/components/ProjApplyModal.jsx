@@ -8,7 +8,7 @@ import { apply } from "../utils/api.js";
 const ProjApplyModal = ({onCancel, onSubmit, project, accountInfo}) => {
     const [text, setText] = useState('');
     const onApply = () => {
-        apply(project._id, accountInfo._id);
+        apply(project._id, accountInfo._id, text);
         onSubmit();
     }
     return (
