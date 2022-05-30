@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const router = express.Router();
+const { sendAdminEmail } = require('./utils');
 
 const Developer = require("./schema/Developer.js");
 const Project = require("./schema/Project.js");
@@ -115,6 +116,7 @@ router
       });
   });
 
+const transporter = createTransport({})
 
 router
   .route("/projects/:pid/modifyApplied/:did")
@@ -132,6 +134,8 @@ router
       .then((success) => {
         res.status(204).send();
       });
+    
+    sendAdminEmail('Project Application', 'Someone applied', '<h1>Application</h1>');
   })
 
 //
