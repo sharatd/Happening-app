@@ -120,6 +120,7 @@ router
   .route("/projects/:pid/modifyApplied/:did")
   .patch((req, res) => {
     const { pid, did } = req.params;
+    const { text:devText } = req.body
     Project.findById(pid)
       .then((data) => {
         if (
@@ -137,8 +138,8 @@ router
         Developer.findById(did)
           .then((developer) => {
             const subject = "Xenah Project Application";
-            const text = `${developer.name} applied to ${project.title}`;
-            const html = `<p>${developer.name} applied to ${project.title}</p>`;
+            const text = `${developer.name} applied to ${project.title}\n\n${devText}`;
+            const html = `<h4>${developer.name} applied to ${project.title}</h4>\n<p>${devText}</p>`;
             sendAdminEmail(subject, text, html);
           })
       })

@@ -23,6 +23,7 @@ const adminEmails = [
   'yabiayele2023@u.northwestern.edu',
   'jacksonmiller2023@u.northwestern.edu',
   'sharatdhananjaya2023@u.northwestern.edu',
+  'quintonnickum2022@u.northwestern.edu'
 ];
 
 const sendAdminEmail = (subject, text, html) => {
@@ -34,8 +35,11 @@ const sendAdminEmail = (subject, text, html) => {
       text,
       html
     }
-
-    transporter.sendMail(mailOptions);
+    try {
+      transporter.sendMail(mailOptions);
+    } catch (err) {
+      console.log(err)
+    }
   })
 }
 
