@@ -6,7 +6,8 @@ import Chip from "@mui/material/Chip";
 import { apply } from "../utils/api.js";
 
 const DevProjectCard = ({project, accountInfo}) => {
-
+  const hasApplied = project.applied.some((applicant) => applicant === accountInfo._id)
+  console.log(project)  
     return(
         <>
           <Card style={{ margin: '1em 0em 1em 0em', width: '100%'}}>
@@ -14,7 +15,9 @@ const DevProjectCard = ({project, accountInfo}) => {
                 <div style={{ display: 'flex', flexDirection: 'row'}}>
                   <h3 style={{margin: '0', padding: '0.5em'}}> { project.title } </h3>
                   <div style={{ marginLeft: 'auto', display: 'flex', flexDirection: 'row', gap: '5px'}}>
-                    <Button onClick={() => apply(project._id, accountInfo._id)} style={{width: 'fit-content', padding: '0.5em', color: 'green'}}>Apply</Button>
+                    <Button disabled={hasApplied} color="success" onClick={() => apply(project._id, accountInfo._id)} style={{width: 'fit-content', padding: '0.5em'}}>
+                      {hasApplied ? "Applied" : "Apply"}
+                    </Button>
                   </div>
                 </div>
                 <div style={{display: 'flex', flexFlow: 'wrap', alignItems: 'center'}}>
