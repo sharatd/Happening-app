@@ -5,14 +5,14 @@ import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
 import { apply } from "../utils/api.js";
 
-const ProjApplyModal = ({onClose, project, accountInfo}) => {
+const ProjApplyModal = ({onCancel, onSubmit, project, accountInfo}) => {
     const [text, setText] = useState('');
-    const onSubmit = () => {
+    const onApply = () => {
         apply(project._id, accountInfo._id);
-        onClose();
+        onSubmit();
     }
     return (
-        <Modal open={showAddProject} onClose={ onClose }>
+        <Modal open={true} onClose={onCancel}>
             <Box 
                 sx={{
                 position: 'absolute',
@@ -32,13 +32,15 @@ const ProjApplyModal = ({onClose, project, accountInfo}) => {
             >
                 <div style={{display: "flex", flexDirection: "column", gap: "1em", margin: '.5em'}}>
                     <h1 style={{ margin: '0' }}>Project Application</h1>
-                    <TextField multiline rows={4} required label="Describe why you want to join this project" value={title} onChange={(e)=>setTitle(e.target.value)}/>
+                    <TextField multiline rows={4} required label="Describe why you want to join this project" value={text} onChange={(e)=>setText(e.target.value)}/>
                     <div style={{width: '100%', display: 'flex', justifyContent: 'space-between'}}>
-                        <Button onClick={() => onClose()} style={{backgroundColor: 'red', color: 'white'}}>Cancel</Button>
-                        <Button onClick={() => handleSubmit()} style={{backgroundColor: 'green', color: 'white'}}>Submit</Button>
+                        <Button onClick={() => onCancel()} style={{backgroundColor: 'red', color: 'white'}}>Cancel</Button>
+                        <Button onClick={() => onApply()} style={{backgroundColor: 'green', color: 'white'}}>Apply</Button>
                     </div>
                 </div>
             </Box>
     </Modal>
     )
-}
+};
+
+export default ProjApplyModal;
