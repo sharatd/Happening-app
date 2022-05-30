@@ -2,7 +2,7 @@ import React from "react";
 import DevProjectCard from "./DevProjectCard"
 import { useProjects } from '../utils/api';
 
-const DevProjectsView = () => {
+const DevProjectsView = ({accountInfo}) => {
 
     let [projects, loading, error] = useProjects();
     
@@ -13,7 +13,7 @@ const DevProjectsView = () => {
         <div>
             <div style={{display: 'flex', flexFlow: 'wrap', justifyContent: 'center', width: '90%', margin: 'auto'}}>
                 {projects.map((project, index) => (
-                <DevProjectCard key={index} project={project}/>
+                <DevProjectCard key={index} project={project} accountInfo={accountInfo}/>
                 ))}
             </div>
         </div>

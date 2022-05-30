@@ -75,3 +75,16 @@ export const login = async (email) => {
     .then((res) => res.json())
     .then((body) => body.developer);
 };
+
+export const apply = (pid, did, text) => {
+  const options = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text }),
+  };
+  return fetch(`${BASE_URL}/projects/${pid}/modifyApplied/${did}`, options)
+  .then((res) => {
+    if (!res.ok) console.log("Not okay", res);
+  })
+};
+

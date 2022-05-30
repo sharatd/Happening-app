@@ -17,6 +17,7 @@ const ProjectCardAddDev = ({ project, developer }) => {
 
     alert(`Added ${developer.name} to ${project.title}`);
     setIsInProject(true);
+    window.location.reload()
   }
 
   const handleDeleteDeveloper = () => {
@@ -26,6 +27,7 @@ const ProjectCardAddDev = ({ project, developer }) => {
 
     alert(`Removed ${developer.name} from ${project.title}`);
     setIsInProject(false);
+    window.location.reload()
   }
 
   const AddButton = () => {

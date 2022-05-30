@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const router = express.Router();
+const { sendAdminEmail } = require('./utils');
 
 const Developer = require("./schema/Developer.js");
 const Project = require("./schema/Project.js");
@@ -89,8 +90,7 @@ router
     Project.findById(pid)
       .then((data) => {
         if (
-          data.developers.some((developer) => developer.toString() === did) ==
-          false
+          !data.developers.some((developer) => developer.toString() === did)
         ) {
           data.developers = [...data.developers, did];
         }
@@ -115,6 +115,35 @@ router
         res.status(200).send();
       });
   });
+
+router
+  .route("/projects/:pid/modifyApplied/:did")
+  .patch((req, res) => {
+    const { pid, did } = req.params;
+    const { text:devText } = req.body
+    Project.findById(pid)
+      .then((data) => {
+        if (
+          !data.applied.some((applicant) => applicant.toString() === did)
+        ) {
+          data.applied = [...data.applied, did];
+        }
+        data.save();
+      })
+      .then((success) => {
+        res.status(204).send();
+      });
+    Project.findById(pid)
+      .then((project) => {
+        Developer.findById(did)
+          .then((developer) => {
+            const subject = "Xenah Project Application";
+            const text = `${developer.name} applied to ${project.title}\n\n${devText}`;
+            const html = `<h4>${developer.name} applied to ${project.title}</h4>\n<p>${devText}</p>`;
+            sendAdminEmail(subject, text, html);
+          })
+      })
+  })
 
 //
 // +------------------+
