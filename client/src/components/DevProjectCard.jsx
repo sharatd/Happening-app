@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from '@mui/material/Button';
 import Chip from "@mui/material/Chip";
-import { apply } from "../utils/api.js";
 import ProjApplyModal from "./ProjApplyModal";
 
 const DevProjectCard = ({project, accountInfo}) => {
@@ -13,11 +12,6 @@ const DevProjectCard = ({project, accountInfo}) => {
   useEffect(() => {
     setHasApplied(project.applied.some((applicant) => applicant === accountInfo._id));
   }, [project, accountInfo]);
-
-  /*const onApply = () => {
-    apply(project._id, accountInfo._id);
-    setHasApplied(true);
-  }*/
 
   const onSubmit = () => {
     setHasApplied(true);
