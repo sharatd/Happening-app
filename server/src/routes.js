@@ -116,8 +116,6 @@ router
       });
   });
 
-const transporter = createTransport({})
-
 router
   .route("/projects/:pid/modifyApplied/:did")
   .patch((req, res) => {
@@ -134,8 +132,16 @@ router
       .then((success) => {
         res.status(204).send();
       });
-    
-    sendAdminEmail('Project Application', 'Someone applied', '<h1>Application</h1>');
+    Project.findById(pid)
+      .then((project) => {
+        Developer.findById(did)
+          .then((developer) => {
+            const subject = "Xenah Project Application";
+            const text = `${developer.name} applied to ${project.title}`;
+            const html = `<p>${developer.name} applied to ${project.title}</p>`;
+            sendAdminEmail(subject, text, html);
+          })
+      })
   })
 
 //
