@@ -23,6 +23,11 @@ const ProjectSchema = new Schema({
     ref: "Developer",
     required: true
   }],
+  applied: [{
+    type: Schema.Types.ObjectId,
+    ref: "Developer",
+    required: true
+  }]
 })
 
 ProjectSchema.statics.create = function(obj) {
@@ -34,6 +39,7 @@ ProjectSchema.statics.create = function(obj) {
   project.technologies = obj.technologies;
   project.topics = obj.topics;
   project.developers = [];
+  project.applied = [];
   return project;
 }
 

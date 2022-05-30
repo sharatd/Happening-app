@@ -3,8 +3,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from '@mui/material/Button';
 import Chip from "@mui/material/Chip";
+import { apply } from "../utils/api.js";
 
-const DevProjectCard = ({project}) => {
+const DevProjectCard = ({project, accountInfo}) => {
 
     return(
         <>
@@ -13,7 +14,7 @@ const DevProjectCard = ({project}) => {
                 <div style={{ display: 'flex', flexDirection: 'row'}}>
                   <h3 style={{margin: '0', padding: '0.5em'}}> { project.title } </h3>
                   <div style={{ marginLeft: 'auto', display: 'flex', flexDirection: 'row', gap: '5px'}}>
-                    <Button style={{width: 'fit-content', padding: '0.5em', color: 'green'}}>Apply</Button>
+                    <Button onClick={() => apply(project._id, accountInfo._id)} style={{width: 'fit-content', padding: '0.5em', color: 'green'}}>Apply</Button>
                   </div>
                 </div>
                 <div style={{display: 'flex', flexFlow: 'wrap', alignItems: 'center'}}>

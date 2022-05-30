@@ -8,7 +8,7 @@ const DeveloperComponent = ({user, accountInfo}) => {
     <div>
       <Switch>
         <Route path="/myinfo" render={() => (<ModifyDeveloperForm user={user} accountInfo={accountInfo}/>)}/> 
-        <Route path="/" component={DevProjectsView}/> 
+        <Route path="/" render={() => (<DevProjectsView accountInfo={accountInfo}/>)}/> 
       </Switch>
     </div>
   )

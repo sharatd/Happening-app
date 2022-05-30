@@ -89,8 +89,7 @@ router
     Project.findById(pid)
       .then((data) => {
         if (
-          data.developers.some((developer) => developer.toString() === did) ==
-          false
+          !data.developers.some((developer) => developer.toString() === did)
         ) {
           data.developers = [...data.developers, did];
         }
@@ -115,6 +114,25 @@ router
         res.status(200).send();
       });
   });
+
+
+router
+  .route("/projects/:pid/modifyApplied/:did")
+  .patch((req, res) => {
+    const { pid, did } = req.params;
+    Project.findById(pid)
+      .then((data) => {
+        if (
+          !data.applied.some((applicant) => applicant.toString() === did)
+        ) {
+          data.applied = [...data.applied, did];
+        }
+        data.save();
+      })
+      .then((success) => {
+        res.status(204).send();
+      });
+  })
 
 //
 // +------------------+

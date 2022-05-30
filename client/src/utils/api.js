@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const BASE_URL = "https://xenah-dev-portal.herokuapp.com/";
-//const BASE_URL = 'http://localhost:8081';
+//const BASE_URL = "https://xenah-dev-portal.herokuapp.com/";
+const BASE_URL = 'http://localhost:8081';
 
 export const useDevelopers = () => {
   const [data, setData] = useState();
@@ -75,3 +75,11 @@ export const login = async (email) => {
     .then((res) => res.json())
     .then((body) => body.developer);
 };
+
+export const apply = (pid, did) => {
+  return fetch(`${BASE_URL}/projects/${pid}/modifyApplied/${did}`, {method: "PATCH"})
+  .then((res) => {
+    if (!res.ok) console.log("Not okay", res);
+  })
+};
+
