@@ -3,7 +3,7 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import ProjectDeveloperCard from "./ProjectDeveloperCard";
 
-const ProjectApplicants = ({ project, onClose, showProjectApplicants }) => {
+const ProjectDevelopers = ({ project, onClose, showProjectApplicants }) => {
 
   return(
     <Modal open={showProjectApplicants} onClose={ onClose }>
@@ -35,4 +35,4 @@ const ProjectApplicants = ({ project, onClose, showProjectApplicants }) => {
   )
 }
 
-export default ProjectApplicants
+export default ProjectDevelopers

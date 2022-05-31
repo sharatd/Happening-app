@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-import ProjectApplicants from "./ProjectApplicants";
+import ProjectDevelopers from "./ProjectDevelopers";
 import ModifyProject from "./ModifyProject";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from '@mui/material/Button';
 import Chip from "@mui/material/Chip";
+import { deleteProject } from "../../../utils/api";
 
 
 const ProjectCard = ({ project }) => {
@@ -12,9 +13,7 @@ const ProjectCard = ({ project }) => {
   const [showModifyProject, setShowModifyProject] = useState(false);
   
   const handleDelete = () => {
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", `https://xenah-dev-portal.herokuapp.com/projects/${project._id}`, false);
-    xhttp.send();
+    deleteProject(project._id)
 
     alert('Deleted project!');
     window.location.reload()
@@ -45,7 +44,7 @@ const ProjectCard = ({ project }) => {
                 </div>
             </CardContent>
           </Card>
-          <ProjectApplicants project={project} onClose={() => setShowProjectApplicants(false)} showProjectApplicants={showProjectApplicants}/>  
+          <ProjectDevelopers project={project} onClose={() => setShowProjectApplicants(false)} showProjectApplicants={showProjectApplicants}/>  
           <ModifyProject onClose={() => setShowModifyProject(false)} showModifyProject={showModifyProject} project={project}/>
         </>
       )

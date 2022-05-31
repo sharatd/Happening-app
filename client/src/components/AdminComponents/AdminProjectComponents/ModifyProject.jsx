@@ -3,7 +3,8 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
-import { technologyOptions, topicOptions } from '../utils/devInfoOptions'
+import { technologyOptions, topicOptions } from '../../../utils/devInfoOptions'
+import { patchProjectInfo } from '../../../utils/api'
 
 const ModifyProject = ({ onClose, showModifyProject, project }) => {
   const [title, setTitle] = useState(project.title);
@@ -79,10 +80,7 @@ const ModifyProject = ({ onClose, showModifyProject, project }) => {
         "developers": project.developers
     }
 
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", `https://xenah-dev-portal.herokuapp.com/projects/${project._id}`, false);
-    xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-    xhttp.send(JSON.stringify(newProject));
+    patchProjectInfo(newProject, project._id)
 
     alert('Updated project!');
 

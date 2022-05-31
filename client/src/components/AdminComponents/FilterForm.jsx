@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import BasicSelectForm from "./form_components/BasicSelectForm";
-import MultipleSelectForm from "./form_components/MultipleSelectForm";
+import BasicSelectForm from "../form_components/BasicSelectForm";
+import MultipleSelectForm from "../form_components/MultipleSelectForm";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
-import { levelOptions, technologyOptions, timeOptions, topicOptions, universityOptions } from '../utils/devInfoOptions'
+import { levelOptions, technologyOptions, timeOptions, topicOptions, universityOptions } from '../../utils/devInfoOptions'
 
 const FilterForm = ({ showFilterForm, onClose, setFilters }) => {
   const [selectedLevels, setSelectedLevels] = useState([]);

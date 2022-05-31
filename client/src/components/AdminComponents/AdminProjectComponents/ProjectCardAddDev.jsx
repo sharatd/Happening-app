@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import ProjectApplicants from "./ProjectApplicants";
+import ProjectDevelopers from "./ProjectDevelopers";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from '@mui/material/Button';
 import Chip from "@mui/material/Chip";
+import { addDevToProject, removeDevFromProject } from "../../../utils/api";
 
 
 const ProjectCardAddDev = ({ project, developer }) => {
@@ -11,9 +12,7 @@ const ProjectCardAddDev = ({ project, developer }) => {
   const [isInProject, setIsInProject] = useState(project.developers.some(dev => dev._id === developer._id))
 
   const handleAddDeveloper = () => {
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", `https://xenah-dev-portal.herokuapp.com/projects/${project._id}/modifyDevelopers/${developer._id}`, false);
-    xhttp.send();
+    addDevToProject(project._id, developer._id)
 
     alert(`Added ${developer.name} to ${project.title}`);
     setIsInProject(true);
@@ -21,9 +20,7 @@ const ProjectCardAddDev = ({ project, developer }) => {
   }
 
   const handleDeleteDeveloper = () => {
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", `https://xenah-dev-portal.herokuapp.com/projects/${project._id}/modifyDevelopers/${developer._id}`, false);
-    xhttp.send();
+    removeDevFromProject(project._id, developer._id)
 
     alert(`Removed ${developer.name} from ${project.title}`);
     setIsInProject(false);
@@ -69,7 +66,7 @@ const ProjectCardAddDev = ({ project, developer }) => {
                 </div>
             </CardContent>
           </Card>
-          <ProjectApplicants project={project} onClose={() => setShowProjectApplicants(false)} showProjectApplicants={showProjectApplicants}/>  
+          <ProjectDevelopers project={project} onClose={() => setShowProjectApplicants(false)} showProjectApplicants={showProjectApplicants}/>  
         </>
       )
 }

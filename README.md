@@ -2,6 +2,10 @@
 
 An internal web portal for managing developers and assigning them to projects.
 
+To make yourself an admin client side, add your email to the client/utils/adminEmails.js file
+
+To make sure you receive emails when a developer applies, add yourself to the adminEmails object in server/src/utils.js
+
 ## Setting Up
 
 Inside both the `client` and `server` folders, run

@@ -65,6 +65,13 @@ export const addRating = (developerId, stat, rating) => {
   });
 };
 
+export const patchDevNotes = (adminNotes, devId) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("PATCH", `${BASE_URL}/developers/adminNotes/${ devId }`, false);
+  xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify({ notes: adminNotes }));
+};
+
 export const login = async (email) => {
   const options = {
     method: "POST",
@@ -88,3 +95,48 @@ export const apply = (pid, did, text) => {
   })
 };
 
+export const addProjectHandleSubmit = (project) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", `${BASE_URL}/projects`, false);
+  xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify(project));
+};
+
+export const patchProjectInfo = (project, projectId) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", `${BASE_URL}/projects/${projectId}`, false);
+  xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify(project))
+};
+
+export const deleteProject = (projectId) =>  {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("DELETE", `${BASE_URL}/projects/${projectId}`, false);
+  xhttp.send();
+};
+
+export const addDevToProject = (projectId, developerId) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", `${BASE_URL}/projects/${projectId}/modifyDevelopers/${developerId}`, false);
+  xhttp.send();
+};
+
+export const removeDevFromProject = (projectId, developerId) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("DELETE", `${BASE_URL}/projects/${projectId}/modifyDevelopers/${developerId}`, false);
+  xhttp.send();
+};
+
+export const addNewDeveloper = (devInfo) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", `${BASE_URL}/developers`, false);
+  xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify(devInfo));
+};
+
+export const updateDeveloperInfo = (devInfo, accountId) => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("PATCH", `${BASE_URL}/developers/${accountId}`, false);
+  xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify(devInfo));
+};

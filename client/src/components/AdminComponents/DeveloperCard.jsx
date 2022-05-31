@@ -7,7 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 
 import DeveloperInfo from "./DeveloperInfo";
-import AddDevToProjectForm from "./AddDevToProjectForm";
+import AddDevToProjectForm from "./AdminProjectComponents/AddDevToProjectForm";
 
 const DeveloperTechnologies = ({ topLanguage, technologies }) => {
   const sortedTechnologies = technologies.sort((dev1, dev2) => dev2.rating - dev1.rating).slice(0, 6)

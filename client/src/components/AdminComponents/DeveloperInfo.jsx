@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Avatar from '@mui/material/Avatar';
 import Card from "@mui/material/Card";
 import Rating from "@mui/material/Rating";
-import { addRating } from "../utils/api";
+import { addRating, patchDevNotes } from "../../utils/api";
 import TextField from "@mui/material/TextField";
 
 import AttributeSliderGroup from './AttributeSliderGroup';
@@ -27,10 +27,7 @@ const DeveloperInfo = ({ onClose, developer }) => {
     addRating(developer._id, "womm", commRating);
     addRating(developer._id, "work", workRating);
 
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("PATCH", `https://xenah-dev-portal.herokuapp.com/developers/adminNotes/${ developer._id }`, false);
-    xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-    xhttp.send(JSON.stringify({ notes: adminNotes }));
+    patchDevNotes(adminNotes, developer._id)
 
     alert('Notes on developer saved.');
     window.location.reload();

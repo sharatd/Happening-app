@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { login } from '../utils/api';
-import AdminComponent from "./AdminComponent";
-import DeveloperComponent from './DeveloperComponent';
-import ModifyDeveloperForm from "./ModifyDeveloperForm";
+import AdminComponent from "./AdminComponents/AdminComponent";
+import DeveloperComponent from './DeveloperComponents/DeveloperComponent';
+import ModifyDeveloperForm from "./DeveloperComponents/ModifyDeveloperForm";
 import NavBar from "./NavBar";
 import { adminEmails } from '../utils/adminEmails';
 

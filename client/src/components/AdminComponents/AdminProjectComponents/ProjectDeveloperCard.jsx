@@ -4,15 +4,14 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import DeveloperInfo from "./DeveloperInfo";
+import DeveloperInfo from "../DeveloperInfo";
+import { removeDevFromProject } from "../../../utils/api";
 
 const ProjectDeveloperCard = ({ developer, projectId }) => {
   const [showDeveloperInfo, setShowDeveloperInfo] = useState(false);
 
   const handleDeleteDeveloper = () => {
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", `https://xenah-dev-portal.herokuapp.com/projects/${projectId}/modifyDevelopers/${developer._id}`, false);
-    xhttp.send();
+    removeDevFromProject(projectId, developer._id)
 
     alert('Deleted developer!');
     window.location.reload()

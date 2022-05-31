@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProjectCard from "./ProjectCard"
 import AddProject from "./AddProject"
-import { useProjects } from '../utils/api';
+import { useProjects } from '../../../utils/api';
 import Button from '@mui/material/Button';
 
 const AdminProjectsView = () => {

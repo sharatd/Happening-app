@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import BasicSelectForm from "./form_components/BasicSelectForm";
-import MultipleSelectForm from "./form_components/MultipleSelectForm";
-import MultipleWithRatingForm from "./form_components/MultipleWithRatingForm";
-import DevProjectsForm from "./form_components/DevProjectsForm";
+import BasicSelectForm from "../form_components/BasicSelectForm";
+import MultipleSelectForm from "../form_components/MultipleSelectForm";
+import MultipleWithRatingForm from "../form_components/MultipleWithRatingForm";
+import DevProjectsForm from "../form_components/DevProjectsForm";
 import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
-import { levelOptions, technologyOptions, topicOptions, universityOptions } from '../utils/devInfoOptions'
+import { levelOptions, technologyOptions, topicOptions, universityOptions } from '../../utils/devInfoOptions'
+import { addNewDeveloper, updateDeveloperInfo } from '../../utils/api'
 
 const ModifyDeveloperForm = ({user, accountInfo}) => {
   let newUser = false
@@ -65,18 +66,12 @@ const ModifyDeveloperForm = ({user, accountInfo}) => {
     }
 
     if (newUser) {
-      const xhttp = new XMLHttpRequest();
-      xhttp.open("POST", "https://xenah-dev-portal.herokuapp.com/developers", false);
-      xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-      xhttp.send(JSON.stringify(updatedInfo));
+      addNewDeveloper(updatedInfo)
 
       alert('Signed Up!');
       window.location.reload()
     } else {
-      const xhttp = new XMLHttpRequest();
-      xhttp.open("PATCH", `https://xenah-dev-portal.herokuapp.com/developers/${accountInfo._id}`, false);
-      xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-      xhttp.send(JSON.stringify(updatedInfo));
+      updateDeveloperInfo(updatedInfo, accountInfo._id)
 
       alert('Updated your info!');
     }

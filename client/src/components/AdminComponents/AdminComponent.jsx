@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';
-import AdminProjectsView from './AdminProjectsView';
+import AdminProjectsView from './AdminProjectComponents/AdminProjectsView';
 import BrowseDevelopers from './BrowseDevelopers';
 
 const AdminComponent = () => {

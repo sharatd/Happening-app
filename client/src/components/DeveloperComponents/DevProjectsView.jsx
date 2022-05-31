@@ -1,6 +1,6 @@
 import React from "react";
 import DevProjectCard from "./DevProjectCard"
-import { useProjects } from '../utils/api';
+import { useProjects } from '../../utils/api';
 
 const DevProjectsView = ({accountInfo}) => {
 
