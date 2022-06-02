@@ -67,17 +67,6 @@ const BrowseDevelopers = () => {
     developerResults = developerResults.filter(developer => developer.timeCommitment > filters.timeAvailability);
   }
 
-
-  // developerResults = developers
-  //   //.filter(developer => developer.timeCommitment >= hoursFilter)
-  //   .map(developer => [numElementsShared(developer.technologies, filters.technologies), developer])
-  //   .filter(([count, _]) => count > 0)
-  //   .filter(([_, developer]) => filters.levels.includes(developer.level))
-  //   .map(([_, developer]) => [numElementsShared(developer.topics, filters.topics), developer])
-  //   .filter(([count, _]) => count > 0)
-  //   .filter(([_, developer]) => filters.universities.includes(developer.university))
-  //   .map(([_, developer]) => developer);
-
   return (
     <div>
       <div style={{display: 'flex', flexDirection: 'column'}}>
