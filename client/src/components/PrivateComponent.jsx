@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
+
 import { login } from '../utils/api';
 import AdminComponent from "./AdminComponents/AdminComponent";
 import DeveloperComponent from './DeveloperComponents/DeveloperComponent';
 import ModifyDeveloperForm from "./DeveloperComponents/ModifyDeveloperForm";
 import NavBar from "./NavBar";
-import { adminEmails } from '../utils/adminEmails';
+import environment from "../utils/environment";
 
 const PrivateComponent = ({user}) => {
   const [accountInfo, setAccountInfo] = useState(null);
 
   useEffect(() => {
-    if (adminEmails.includes(user.email)) {
+    if (environment.ADMIN_EMAILS.includes(user.email)) {
       setAccountInfo({ role: 'admin'});
 
     } else {

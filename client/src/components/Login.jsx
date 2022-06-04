@@ -1,7 +1,7 @@
 import React from "react";
-import { ReactComponent as XenahLogo } from "../Xenah Logos/SVG/xenah_logo-full.svg"
+import { ReactComponent as XenahLogo } from '../assets/xenah-logo/SVG/xenah_logo-full.svg';
 import Button from "@mui/material/Button";
-import { signInWithGoogle } from '../utils/firebase'
+import { signInWithGoogle } from '../utils/firebase';
 
 const Login = () => {
 

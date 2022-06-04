@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-const BASE_URL = "https://xenah-dev-portal.herokuapp.com/";
-//const BASE_URL = 'http://localhost:8081';
+import environment from "./environment";
+
+const BASE_URL = environment.BASE_URL;
 
 export const useDevelopers = () => {
   const [data, setData] = useState();
